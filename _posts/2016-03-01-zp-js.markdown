@@ -1,0 +1,210 @@
+---
+layout:     post
+title:      "javascript小练习"
+date:       2016-03-01
+author:     "赵祎鑫"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - 作品
+---
+
+争取每天至少一个小作品练习~
+
+等JS练得差不多了，就去搞定node.js~
+
+今年的任务就是这些~
+
+#### 基本样式设置
+ 
+[DEMO](http://zhaoyixin.xyz/zp-js/20160301/index.html)
+
+#### 图片轮播的两种方式
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160303/index.html)
+
+#### 模拟手机信息发送
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160304/index.html)
+
+#### 自动生成10个li标签
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160305/index.html)
+
+#### 自动生成100个li标签
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160307/index.html)
+
+#### 图片随鼠标移动不断出现
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160308/index.html)
+
+#### 弹出提示框（兼容浏览器）
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160309/index.html)
+
+在做这个例子的时候，发现`getElementByTagName`这个属性如果要获取某个标签，需要`getElementByTagName[0]`书写。
+
+哪怕是这样的DOM结构
+
+```
+<li>
+    <span></span>
+    <span>说明1</span>
+    <div class="popup">弹窗1</div>
+</li>
+```
+
+看来自己对原生javaScript理解的还是不够透彻啊~
+
+多加学习~
+
+准备再看一遍[javaScript高级程序设计（第三版）](http://item.jd.com/10951037.html)赋上链接~
+
+#### 选项卡交叉同步走
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160310/index.html)
+
+#### 奇偶横竖排判断
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160311/index.html)
+
+#### QQ列表展开收缩拓展
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160313/index.html)
+
+#### 带缩略图的图片切换效果
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160314/index.html)
+
+#### QQ列表展开效果
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160315/index.html)
+
+#### 数据类型判断——找到合适的值
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160316/index.html)
+
+#### QQ号码判断
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160321/index.html)
+
+#### 修改文本框的值
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160328/index.html)
+
+#### 搜狐视频记录片列表展示
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160329/index.html)
+
+#### 选项卡中套选项卡
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160330/index.html)
+
+#### 下拉联动菜单——面向对象版
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160331/index.html)
+
+#### javascript分页效果
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160331-2/index.html)
+
+#### 百度文库评分效果
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160401/index.html)
+
+#### 百度音乐全选效果
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160405/index.html)
+
+#### javascript切换div中数字
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160405-2/index.html)
+
+#### javascript切换div
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160405-3/index.html)
+
+#### 延时消失的菜单
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160406/index.html)
+
+#### 淘宝商品广告效果
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160408/index.html)
+
+#### 百叶窗效果
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160408-2/index.html)
+
+#### 自动轮换选项卡
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160411/index.html)
+
+#### 点击往下掉，再点击飘回来
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160418/index.html)
+
+#### 点击加分效果-可重复点击
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160419/index.html)
+
+#### 留言板，限制条数
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160420/index.html)
+
+#### 图片排序
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160421/index.html)
+
+#### 回到顶部
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160422/index.html)
+
+#### 拖拽回放
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160425/index.html)
+
+#### 检测重合
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160427/index.html)
+
+####  淡入淡出图片
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160503/index.html)
+
+####  侧栏分享淡入淡出
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160504/index.html)
+
+####  模拟钟摆运动
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160505/index.html)
+
+####  仿苹果系统文件倒影展示效果
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160913/index.html)
+
+####  分页特效
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160913-2/index.html)
+
+####  轮播图
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160914-1/index.html)
+
+####  百叶窗效果
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160914-2/index.html)
+
+####  面向对象选项卡
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160918-1/index.html)
+
+####  面向对象拖拽
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160919/index.html)
+
+####  继承的拖拽
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20160920/index.html)
+

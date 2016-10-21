@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="开拓视野，冲破艰险，看见世界，身临其境，贴近彼此，感受生活，这就是生活的目的。">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>转：CSS或JS实现gif动态图片的停止与播放 - 赵祎鑫 | ZhaoYiXin</title>
+
+    <link rel="canonical" href="http://zhaoyixin.xyz/2016/02/15/gif-control/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">赵祎鑫</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-js-version.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/post-bg-js-version.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#技术" title="技术">技术</a>
+                        
+                    </div>
+                    <h1>转：CSS或JS实现gif动态图片的停止与播放</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by 赵祎鑫 on February 15, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<h2 id="cssjsgif">CSS或JS实现gif动态图片的停止与播放</h2>
+
+<p>该篇文章是在看前端大神<a href="http://www.zhangxinxu.com/">张鑫旭</a>的BLOG时发现的，之前在我的工作中涉及到gif图的播放及暂停，所以就转到自己BLOG上加以学习~</p>
+
+<h4 id="gifimg">一、gif图片自己可控前提下的方法一：多img资源控制处理</h4>
+
+<p>假如说，我们希望暂停的gif是自己(开发人员)传上去的，不是用户可以随机上传不可控的gif. 我们可以这么处理，就是准备2套图片，一个是gif动态图片，还有一个是只有一帧的静止的图片。然后使用JS来回切换<code class="highlighter-rouge">&lt;img&gt;</code>的<code class="highlighter-rouge">src</code>值为这两张图片地址就好了。</p>
+
+<p><code class="highlighter-rouge">
+img.src="animate.gif";
+// 或者呈现的是
+img.src="static.png";
+</code></p>
+
+<p>这个方法最大的优点就是兼容性强，所有浏览器都可以实现停止效果。然而，这种方法有个局限，就是，暂停时候呈现的图片永远是同一张。基本上可以说是停止，而不是暂停。</p>
+
+<h4 id="gifcss3-animation">二、gif图片自己可控前提下的方法二：CSS3 animation控制</h4>
+
+<p>也就是我们看到的gif效果并不是一个真正的gif图片，而是使用CSS3的animation属性控制形成的逐帧动态图片效果。说穿了就是animation控制Sprites图片的background-position值模拟gif效果。</p>
+
+<p><a href="http://www.zhangxinxu.com/study/201512/gif-stop-and-play-by-css3-animation.html">查看例子</a></p>
+
+<p>此方法好是好，但是也有弊端</p>
+
+<p>1.IE10+等支持CSS3 animation的浏览器才行；2.最大的问题是图片需要是自己控制，如果想控制用户上传的真正意义的gif图片，只能……</p>
+
+<h4 id="gif">三、自己无法控制的gif图片的停止与播放</h4>
+
+<p><a href="http://www.zhangxinxu.com/study/201512/gif-stop-and-play-by-js-canvas.html">查看例子</a></p>
+
+<p>那么，如何使用呢？</p>
+
+<p><a href="http://www.zhangxinxu.com/">张鑫旭</a>对HTMLImageElement原型进行了扩展，增加了stop()和play()两个方法，大家只要在页面中自己的JS文件中复制上面的代码，然后直接调用方法即可~</p>
+
+<p><code class="highlighter-rouge">
+if ('getContext' in document.createElement('canvas')) {
+    HTMLImageElement.prototype.play = function() {
+        if (this.storeCanvas) {
+            // 移除存储的canvas
+            this.storeCanvas.parentElement.removeChild(this.storeCanvas);
+            this.storeCanvas = null;
+            // 透明度还原
+            image.style.opacity = '';
+        }
+        if (this.storeUrl) {
+            this.src = this.storeUrl;    
+        }
+    };
+    HTMLImageElement.prototype.stop = function() {
+        var canvas = document.createElement('canvas');
+        // 尺寸
+        var width = this.width, height = this.height;
+        if (width &amp;&amp; height) {
+            // 存储之前的地址
+            if (!this.storeUrl) {
+                this.storeUrl = this.src;
+            }
+            // canvas大小
+            canvas.width = width;
+            canvas.height = height;
+            // 绘制图片帧（第一帧）
+            canvas.getContext('2d').drawImage(this, 0, 0, width, height);
+            // 重置当前图片
+            try {
+                this.src = canvas.toDataURL("image/gif");
+            } catch(e) {
+                // 跨域
+                this.removeAttribute('src');
+                // 载入canvas元素
+                canvas.style.position = 'absolute';
+                // 前面插入图片
+                this.parentElement.insertBefore(canvas, this);
+                // 隐藏原图
+                this.style.opacity = '0';
+                // 存储canvas
+                this.storeCanvas = canvas;
+            }
+        }
+    };
+}
+</code></p>
+
+<p><code class="highlighter-rouge">
+var image = document.getElementsByTagName("img")[0];
+// 停止gif图片
+image.stop();
+// 播放gif图片
+image.play();
+</code></p>
+
+
+                <hr>
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/02/14/new-start/" data-toggle="tooltip" data-placement="top" title="2016，新的开始">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/02/16/beWeb/" data-toggle="tooltip" data-placement="top" title="转：如何成为一名卓越的前端工程师">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+
+            </div>
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#生活" title="生活" rel="2">
+                                    生活
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#技术" title="技术" rel="7">
+                                    技术
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#工作总结" title="工作总结" rel="2">
+                                    工作总结
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#作品" title="作品" rel="1">
+                                    作品
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#笔记" title="笔记" rel="20">
+                                    笔记
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#学习jQuery源码" title="学习jQuery源码" rel="1">
+                                    学习jQuery源码
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://zhaoyixin.xyz">赵祎鑫</a></li>
+                    
+                        <li><a href="http://segmentfault.com/">segmentfault</a></li>
+                    
+                        <li><a href="http://div.io/">div.io</a></li>
+                    
+                        <li><a href="http://www.w3cfuns.com/">w3cfuns</a></li>
+                    
+                        <li><a href="https://github.com/">github</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/zhao-yi-xin-81">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://weibo.com/alhq1314">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/zhaoyixin">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 赵祎鑫 2016
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!-- Highlight.js -->
+<script>
+    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+        hljs.initHighlightingOnLoad();
+    })
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4954d96711a89075e45ad76cebc41374';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

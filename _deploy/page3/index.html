@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="开拓视野，冲破艰险，看见世界，身临其境，贴近彼此，感受生活，这就是生活的目的。">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>赵祎鑫 | ZhaoYiXin</title>
+
+    <link rel="canonical" href="http://zhaoyixin.xyz/page3/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">赵祎鑫</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>赵祎鑫</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">我的一生是纠结的一生</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+    		<div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+    			
+<div class="post-preview">
+    <a href="/2016/03/21/js-miaov-1/">
+        <h2 class="post-title">
+            javaScript基础笔记——json
+        </h2>
+        
+        <div class="post-content-preview">
+            
+  json是一种数据格式
+
+
+json的语法格式
+
+```
+var json = {name:’leo’,age:23};
+alert(json.name);
+
+var imgData = {
+    url:[‘1.png’,’2.png’,’3.png’,’4.png’],
+    text:[‘图片一’,’图片二’,’图片三’,’图片四’]
+};
+alert(imgData.url...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on March 21, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/03/01/zp-js/">
+        <h2 class="post-title">
+            javascript小练习
+        </h2>
+        
+        <div class="post-content-preview">
+            争取每天至少一个小作品练习~
+
+等JS练得差不多了，就去搞定node.js~
+
+今年的任务就是这些~
+
+基本样式设置
+
+DEMO
+
+图片轮播的两种方式
+
+DEMO
+
+模拟手机信息发送
+
+DEMO
+
+自动生成10个li标签
+
+DEMO
+
+自动生成100个li标签
+
+DEMO
+
+图片随鼠标移动不断出现
+
+DEMO
+
+弹出提示框（兼容浏览器）
+
+DEMO
+
+在做这个例子的时候，发现getEleme...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on March 1, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/03/01/jquery-qs/">
+        <h2 class="post-title">
+            jquery方法toggle()问题
+        </h2>
+        
+        <div class="post-content-preview">
+            
+  昨天在制作一个页面时，遇到了一个jquery的toggle()问题，拿来跟大家分享，坑还是挺深的~
+
+
+我们先来看一下jquery的toggle()方法
+
+toggle([speed],[easing],[fn])
+
+概述
+
+用于绑定两个或多个事件处理器函数，以响应被选元素的轮流的 click 事件。如果元素是可见的，切换为隐藏的；如果元素是隐藏的，切换为可见的。
+
+参数
+
+
+
+示例
+...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on March 1, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/02/25/web-hz/">
+        <h2 class="post-title">
+            转：移动Web开发技巧汇总
+        </h2>
+        
+        <div class="post-content-preview">
+            
+  这是一个最好的时代，因为我们站在潮流中；但也是一个最坏的时代，因为我们站在潮头上。
+
+
+
+  特别感谢ljinkai的分享~这是他的Blog、新浪微博
+
+
+META相关
+
+添加到主屏后的标题（IOS）
+
+```
+
+
+```
+
+启用 WebApp 全屏模式（IOS）
+
+当网站添加到主屏幕后再点击进行启动时，可隐藏地址栏（从浏览器跳转或输入链接进入并没有此效果）
+
+```
+
+
+
+
+```
+...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on February 25, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/02/24/mob-sp/">
+        <h2 class="post-title">
+            转：移动端高清、多屏适配方案
+        </h2>
+        
+        <div class="post-content-preview">
+            
+  最近在逛前端乱炖时，发现了非常好的一篇文章~讲移动端高清、多屏适配的。我本人在工作中经常做一些web轻应用，需要同时适配PC和移动端。之前的解决方案是PC端定宽600px,移动端采用宽高100%，不同手机的屏幕适配采用CSS媒体查询的方式。这篇文章从Retina屏与普通屏、以及多屏的适配上面进行了详细的讲解，收获颇丰，特分享出来，供大家参考~
+
+
+
+  特别感谢Lovesueee的分享...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on February 24, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/02/24/krpano/">
+        <h2 class="post-title">
+            krpano自学
+        </h2>
+        
+        <div class="post-content-preview">
+            
+  这两天在工作中，需要学习新的软件krpano。
+
+
+The krpano Viewer is a small and very flexible high-performance viewer for all kind of panoramic images and interactive virtual tours. The viewer is available as Flash ...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on February 24, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/02/22/workZJ/">
+        <h2 class="post-title">
+            jQuery全屏滚动插件fullPage.js使用总结
+        </h2>
+        
+        <div class="post-content-preview">
+            
+  今天在使用jQuery插件fullPage.js时遇到了一个坑~特来总结一下，提醒自己以后注意~
+
+
+在fullpage.js这个插件中，有一个方法是setAllowScrolling()，这个方法的作用是添加或删除鼠标滚轮/触控板控制。
+
+setAllowScrolling(boolean, [directions])
+
+Demo Adds or remove the possibi...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on February 22, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/02/18/http-hc/">
+        <h2 class="post-title">
+            转：透过浏览器看HTTP缓存
+        </h2>
+        
+        <div class="post-content-preview">
+            
+  注：本文转自大额_skylar，一个非常可爱的前端妹子`(∩_∩)′，我个人对于浏览器缓存这方面一直比较薄弱，转发学习之~
+
+
+作为前端开发人员，对于我们的站点或应用的缓存机制我们能做的似乎不多，但这些却是与我们关注的性能息息相关的部分，站点没有做任何缓存机制，我们的页面可能会因为资源的下载和渲染变得很慢，但大家都知道去找前端去解决页面慢的问题而不会去找服务端的开发人员。因此，了解相关...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on February 18, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/02/18/for-xhsx/">
+        <h2 class="post-title">
+            转：For循环中分号隔开的3部分的执行顺序探讨
+        </h2>
+        
+        <div class="post-content-preview">
+            
+  for循环是我们编写javascript代码时经常用到的一种循环命令，之前一直对for循环中三个表达式的执行顺序不太明白，今天在网上找到这样一篇文章，觉得讲得很清楚，转过来，供大家借鉴~
+
+
+for循环命令一般为：
+
+```
+for(initialize; test; increment)
+  statement
+
+// 或者
+
+for(initialize; test; increm...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on February 18, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/02/16/beWeb/">
+        <h2 class="post-title">
+            转：如何成为一名卓越的前端工程师
+        </h2>
+        
+        <div class="post-content-preview">
+            
+  译注：本文翻译自谷歌工程师 Philip Walton 的一篇博客。看过之后非常有感触，很多观点都是自己一直坚持想要达到的，分享给大家，希望可以有所帮助。
+
+
+最近我收到一封读者来信让我陷入了思考，信是这么写的：
+
+Hi Philip，您是否介意我问，您是如何成为一名卓越 (great) 的前端工程师的？对此您有什么建议吗？
+不得不承认，被问这样的问题，我很惊讶，因为我从来不觉得自己是...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on February 16, 2016
+    </p>
+</div>
+<hr>
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+    <li class="previous">
+        <a href="/page2">&larr; Newer Posts</a
+                >
+    </li>
+    
+    
+    <li class="next">
+        <a href="/page4">Older Posts &rarr;</a>
+    </li>
+    
+</ul>
+
+
+    		</div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                                <a href="/tags/#生活" title="生活" rel="2">
+                                    生活
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#技术" title="技术" rel="7">
+                                    技术
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#工作总结" title="工作总结" rel="2">
+                                    工作总结
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#作品" title="作品" rel="1">
+                                    作品
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#笔记" title="笔记" rel="20">
+                                    笔记
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#学习jQuery源码" title="学习jQuery源码" rel="1">
+                                    学习jQuery源码
+                                </a>
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+                        
+                            <img src="/img/avatar-zyx.jpg" />
+                        
+                        
+                            <p>开拓视野，冲破艰险，看见世界，身临其境，贴近彼此，感受生活，这就是生活的目的。</p>
+                        
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.zhihu.com/people/zhao-yi-xin-81">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="http://weibo.com/alhq1314">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://github.com/zhaoyixin">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </section>
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://zhaoyixin.xyz">赵祎鑫</a></li>
+                    
+                        <li><a href="http://segmentfault.com/">segmentfault</a></li>
+                    
+                        <li><a href="http://div.io/">div.io</a></li>
+                    
+                        <li><a href="http://www.w3cfuns.com/">w3cfuns</a></li>
+                    
+                        <li><a href="https://github.com/">github</a></li>
+                    
+                </ul>
+                
+    		</div>
+        
+	</div>
+</div>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/zhao-yi-xin-81">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://weibo.com/alhq1314">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/zhaoyixin">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 赵祎鑫 2016
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!-- Highlight.js -->
+<script>
+    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+        hljs.initHighlightingOnLoad();
+    })
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4954d96711a89075e45ad76cebc41374';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

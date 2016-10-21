@@ -1,0 +1,18 @@
+---
+layout:     post
+title:      "javaScript基础笔记——定时器一"
+date:       2016-03-22
+author:     "赵祎鑫"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - 笔记
+---
+
+#### 定时器应用
+
+```
+//获取元素样式函数
+function getStyle(obj,attr){
+    return obj.currentStyle?obj.currentStyle[attr]:getComputed(obj)[attr];
+}
+```

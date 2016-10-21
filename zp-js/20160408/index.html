@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淘宝商品广告效果</title>
+    <style>
+        html, body, ul {
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            border: 0;
+            float: left;
+            margin: 0 5px;
+        }
+        li {
+            list-style: none;
+            border: 1px solid #FFADAD;
+            width: 40px;
+            padding: 5px;
+            text-align: center;
+            font-size: 12px;
+        }
+        a {
+            text-decoration: none;
+            display: block;
+            color: #000;
+        }
+        #wrap {
+            border: 1px solid #FF6300;
+            padding: 5px;
+            overflow: hidden;
+            width: 294px;
+            margin: 50px auto;
+        }
+        #left {
+            float: left;
+        }
+        #right {
+            float: left;
+            right: 0;
+            top: 0;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oImg = document.getElementsByTagName('img')[0],
+                    aLi = document.getElementsByTagName('li'),
+                    timer = null,
+                    img = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png', '8.png', '9.png', '10.png', '11.png', '12.png', '13.png', '14.png'],
+                    num = 0,
+                    flag = 0;
+
+            function clearAll(){
+                for(var i=0; i<aLi.length; i++){
+                    aLi[i].style.background = '#fff';
+                    aLi[i].getElementsByTagName('a')[0].style.color = '#000';
+                }
+            }
+
+            for(var i=0; i<aLi.length; i++){
+                aLi[i].index = i;
+                aLi[i].onmouseout = function(){
+                    this.style.background = '#fff';
+                    this.getElementsByTagName('a')[0].style.color = '#000';
+                    timer = setInterval(autoplay, 1000);
+                };
+                aLi[i].onmouseover = function(){
+                    clearInterval(timer);
+                    clearAll();
+                    this.style.background = '#FF4A6B';
+                    this.getElementsByTagName('a')[0].style.color = '#fff';
+                    oImg.src = img[this.index];
+                }
+            }
+
+            function autoplay(){
+                clearAll();
+
+                aLi[num].style.background = '#FF4A6B';
+                aLi[num].getElementsByTagName('a')[0].style.color = '#fff';
+                oImg.src = img[num];
+
+                if(num<aLi.length/2){
+                    num++;
+                    if (num == aLi.length/2) {
+                        num = aLi.length - 1;
+                    }
+                } else {
+                    num--;
+                    if (num == aLi.length/2 - 1) {
+                        num = 0;
+                    }
+                }
+            }
+
+            timer = setInterval(autoplay, 1000);
+
+        }
+    </script>
+</head>
+<body>
+<div id="wrap">
+    <ul id="left">
+        <li><a href="#">连衣裙</a></li>
+        <li><a href="#">雪纺</a></li>
+        <li><a href="#">T恤</a></li>
+        <li><a href="#">铅笔裤</a></li>
+        <li><a href="#">婚纱</a></li>
+        <li><a href="#">外套</a></li>
+        <li><a href="#">连体裤</a></li>
+    </ul>
+    <img src="1.png" />
+    <ul id="right">
+        <li><a href="#">包包</a></li>
+        <li><a href="#">凉鞋</a></li>
+        <li><a href="#">单鞋</a></li>
+        <li><a href="#">太阳镜</a></li>
+        <li><a href="#">丝袜</a></li>
+        <li><a href="#">帆布鞋</a></li>
+        <li><a href="#">情侣装</a></li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+---
+layout:     post
+title:      "妙味课堂——javaScript继承的其他形式"
+date:       2016-09-20
+author:     "赵祎鑫"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - 笔记
+---
+
+继承的其他形式
+
+类式继承
+
+- 利用构造函数（类）继承的方式
+
+类：javascript是没有类的概念的，但是可以把构造函数看作是类
+
+要做属性和方法继承的时候，要分开继承
+
+```
+function Aaa(){            //父类
+    this.name = [1,2,3];
+}
+Aaa.prototype.showName = function(){
+    alert(this.name);
+};
+function Bbb(){             //子类
+    Aaa.call(this);
+}
+
+var F = function(){};
+F.prototype = Aaa.prototype;
+Bbb.prototype = new F();      //类式继承
+Bbb.prototype.constructor = Bbb;    //修正指向问题
+
+var b1 = new Bbb();
+b1.showName();
+```
+
+原型继承
+
+- 借助原型来实现对象继承对象
+
+```
+var a = {
+    name : 'zyx'
+};
+var b = cloneObj(a);
+alert(b.name);           //zyx
+function cloneObj(obj){
+    var F = function(){};
+    F.prototype = obj;
+    return new F();
+}
+```
+
+
+
+

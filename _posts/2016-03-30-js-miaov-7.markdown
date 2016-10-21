@@ -1,0 +1,57 @@
+---
+layout:     post
+title:      "CSS3相关"
+date:       2016-03-30
+author:     "赵祎鑫"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - 笔记
+---
+
+#### CSS3相关
+
+transition 过渡
+
+```
+//过渡
+transition:1s width ease
+
+//浏览器内核前缀
+-webkit- -moz- -o- -ms-
+```
+
+rbga 颜色值 rgba 红+绿+蓝+alpha
+
+```
+rgba(0,0,0,0.5)
+```
+
+linear-gradient 线性渐变
+
+```
+linear-gradient(top,red 0%,blue 100%)
+```
+
+box-reflect 倒影
+
+```
+box-reflect:below 10px linear-gradient(top,red 0%,blue 100%);
+```
+
+transform 变换
+
+```
+transform:rotate(30deg);rtansition 5s ease all;
+```
+
+transform-style:preserve-3d 3d变换
+
+```
+perspective:200px;transform-style:preserve-3d;
+```
+
+stanslate 位移
+
+```
+translateZ(100px);
+```

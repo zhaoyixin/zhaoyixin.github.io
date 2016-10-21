@@ -1,0 +1,18 @@
+---
+layout:     post
+title:      "krpano自学"
+date:       2016-02-24
+author:     "赵祎鑫"
+header-img: "img/2016-02-24-krpano.jpg"
+tags:
+    - 工作总结
+---
+
+> 这两天在工作中，需要学习新的软件[krpano](http://krpano.com/)。
+
+The `krpano Viewer` is a small and very flexible high-performance viewer for all kind of panoramic images and interactive virtual tours. The viewer is available as Flash and HTML5 application. The viewer is designed for the usage inside the Browser on Desktop (Windows, Mac, Linux) and on Mobiles/Tablets (iPhone, iPad, Android, ...).
+
+现在对这个软件还处于一知半解的状态。很多地方都没有弄明白，先学习[官方文档](http://krpano.com/docu/)先~
+
+最近会比较忙，这两三周可能都不会更新的这么及时了。反正这东西也是就我一个人看的，嘿嘿~无所谓啦。
+

@@ -1,0 +1,150 @@
+---
+layout:     post
+title:      "妙味课堂——闭包"
+date:       2016-09-13
+author:     "赵祎鑫"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - 笔记
+---
+
+1、什么是闭包？
+
+函数嵌套函数
+
+内部函数可以引用外部函数的参数和变量
+
+参数和变量并不会被垃圾回收机制所收回
+
+```
+function aaa(a){
+    var b = 5;    //并不会被回收
+    function bbb(){
+        alert(b);
+        alert(a);
+    }
+}
+```
+
+javascript中的垃圾回收机制
+
+```
+function aaa(){
+    var a = 1;     //执行完变量就会被收回
+}
+aaa();
+```
+
+```
+function aaa(){
+    var a = 5;
+    function bbb(){
+        alert(a);
+    }
+    return bbb;
+}
+var c = aaa();
+c();
+```
+
+2、闭包有什么好处？应用在哪里？
+
+希望一个变量长期驻扎在内存当中
+
+避免全局变量的污染
+
+模块化代码
+
+私有成员的存在
+
+在循环中直接找到对应元素的索引
+
+```
+var a = 1;
+function aaa(){
+    a++;
+    alert(a);
+}
+aaa();   //2
+aaa();   //3
+```
+
+```
+function aaa(){
+    var a = 1;
+    a++;
+    alert(a);
+}
+aaa();   //2
+aaa();   //2
+```
+
+```
+function aaa(){
+    var a = 1;
+    return function(){
+        a++;
+        alert(a);
+    }
+}
+var b = aaa();
+b();   //2
+b();   //3
+```
+
+```
+var aaa = (function(){
+    var a = 1;
+    return function(){
+        a++;
+        alert(a);
+    }
+})();
+aaa();    //2
+aaa();    //3
+```
+
+```
+var aaa = (function(){
+    var a = 1;
+    funtcion bbb(){
+        a++;
+        alert(a);
+    }
+    function ccc(){
+        a++;
+        alert(a);
+    }
+    return {
+        b:bbb,
+        c:ccc
+    }
+})();
+aaa.b();    //2
+aaa.c();    //3
+```
+
+```
+var aLi = document.getElementsByTagName('li');
+for(var i=0;i<aLi.length;i++){
+    (function(i){
+        aLi[i].onclick = function(){
+            alert(i);
+        }
+    })(i);
+}
+```
+
+3、闭包需要注意的地方？
+
+在IE下容易引发内存泄漏
+
+
+
+
+
+
+
+
+
+

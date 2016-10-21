@@ -1,0 +1,167 @@
+---
+layout:     post
+title:      "javaScript基础笔记——json"
+date:       2016-03-21
+author:     "赵祎鑫"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - 笔记
+---
+
+> json是一种数据格式
+
+#### json的语法格式
+
+```
+var json = {name:'leo',age:23};
+alert(json.name);
+
+var imgData = {
+    url:['1.png','2.png','3.png','4.png'],
+    text:['图片一','图片二','图片三','图片四']
+};
+alert(imgData.url);
+alert(imgData.url[2]);
+
+//一般采用字符串方式来定义
+//var json2 = {name:'leo'};
+var json2 = {'name':'leo'};
+
+//alert(json2.name);
+//alert(json2['name']);
+json2.name = 'abc';
+
+var arr = [{},{}];
+
+var json4 = {name:'miaov',age:3,fun:'前端开发'};
+for(var attr in json4){
+    //alert(attr);   //name,age,fun
+    alert(json4[attr]);  //miaov,3,前端开发
+}
+
+var json5 = {
+    'url':['1.png','2.png','3.png','4.png'],
+    'text':['图片一','图片二','图片三','图片四']
+};
+for(var attr in json5){
+    for(var i=0;i<json5[attr].length;i++){
+       json5[attr][i] 
+    }
+}
+```
+
+#### json——for in 遍历对象属性
+
+```
+var str = '';
+for(var attr in window){
+    str+= attr + ':' +window[attr] + '</br>'; 
+}
+document.body.innerHTML = str;  //查看window对象的属性
+```
+
+#### 关于for循环和for in的使用
+
+```
+var json6 = {
+    'url':['1.png','2.png','3.png','4.png'],
+    'text':['图片一','图片二','图片三','图片四']
+};
+//json没有长度属性，不能用for循环
+
+var arr=['a','b','c'];
+for(var i in arr){
+    laert(i);   //0 1 2
+    alert(arr[i])    //a b c
+}
+```
+
+#### 数组的定义
+
+```
+//var arr = [1,2,3];
+var arr = new Array(1,2,3);
+alert(arr);   //1,2,3
+```
+
+#### 数组的添加方法
+
+```
+var arr = [1,2,3];
+arr.push(4);
+alert(arr);   //1,2,3，4
+//push方法，返回值是数组的新的长度
+
+var arr1 = [1,2,3];
+arr.unshift(0);
+alert(arr);   //0,1,2,3   IE6,IE7不支持unshift返回值
+```
+
+#### 数组的删除方法
+
+```
+var arr = ['abc','def','ggg','hhh','leo'];
+arr.pop();
+alert(arr);    //abc,def,ggg,hhh  返回删除的
+
+var arr = ['abc','def','ggg','hhh','leo'];
+arr.shift();
+alert(arr);    //def,ggg,hhh,leo  返回删除的
+```
+
+#### 数组的splice
+
+```
+var arr = ['abc','def','ggg','hhh','leo'];
+//删除，替换，添加
+arr.splice(0,1);
+alert(arr);    //def,ggg,hhh,leo
+
+arr.splice(0,1,'www');
+alert(arr);    //www,def,ggg,hhh,leo
+
+arr.splice(1,0,'www');
+alert(arr);   //abc,www,def,ggg,hhh,leo
+```
+
+#### 数组去重
+
+```
+var arr = [1,2,2,4,3];
+for(var i=0;i<arr.length;i++){
+    for(var j=i+1;j<arr.length;j++){
+        if(arr[i] == arr[j]){
+            arr.splice(j,1);
+            j--;
+        }
+    }
+}
+alert(arr);
+```
+
+#### sort排序
+
+```
+var arr = ['a','c','b'];
+arr.sort();
+alert(arr);    //a,b,c
+
+var arr2 = [4,3,56,77,44,87];
+arr2.sort(function(a,b){
+    return a-b;
+});
+alert(arr2);
+
+var arrWidth = ['111px','234px','30px'];
+arrWidth.sort(function(a,b){
+    return parseInt(a) - parseInt(b);
+});
+alert(arrWidth);    
+```
+
+#### 随机函数
+
+```
+0~1 : Math.random();
+四舍五入: Math.round();
+```

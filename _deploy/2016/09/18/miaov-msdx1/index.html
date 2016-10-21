@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="开拓视野，冲破艰险，看见世界，身临其境，贴近彼此，感受生活，这就是生活的目的。">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>妙味课堂——javaScript面向对象 - 赵祎鑫 | ZhaoYiXin</title>
+
+    <link rel="canonical" href="http://zhaoyixin.xyz/2016/09/18/miaov-msdx1/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">赵祎鑫</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-js-version.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/post-bg-js-version.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#笔记" title="笔记">笔记</a>
+                        
+                    </div>
+                    <h1>妙味课堂——javaScript面向对象</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by 赵祎鑫 on September 18, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>什么是面向对象编程</p>
+
+<p>用对象的思想去写代码，就是面向对象编程</p>
+
+<ul>
+  <li>
+    <p>过程式写法</p>
+  </li>
+  <li>
+    <p>面向对象写法</p>
+  </li>
+</ul>
+
+<p>我们一直都在使用对象</p>
+
+<ul>
+  <li>数组 Array 时间 Date</li>
+</ul>
+
+<p>面向对象编程（OOP）的特点</p>
+
+<ul>
+  <li>
+    <p>抽象：抓住核心问题</p>
+  </li>
+  <li>
+    <p>封装：只能通过对象来访问方法</p>
+  </li>
+  <li>
+    <p>继承：从已有对象上继承出新的对象</p>
+  </li>
+  <li>
+    <p>多态：多对象的不同形态</p>
+  </li>
+</ul>
+
+<p>```
+var arr = new Array();    //我们把系统自带的对象，叫做系统对象</p>
+
+<p>var date = new Date();</p>
+
+<p>arr.length;</p>
+
+<p>arr.push;</p>
+
+<p>arr.sort();</p>
+
+<p>date.getDate();</p>
+
+<p>var t1 = new Tab();</p>
+
+<p>t1.over();</p>
+
+<p>t1.autoPlay();
+```</p>
+
+<p>对象的组成</p>
+
+<ul>
+  <li>
+    <p>方法（行为、操作）——函数：过程、动态的</p>
+  </li>
+  <li>
+    <p>属性——变量：状态、静态的</p>
+  </li>
+</ul>
+
+<p>创建第一个面向对象程序</p>
+
+<ul>
+  <li>
+    <p>为对象添加属性和方法</p>
+  </li>
+  <li>Object</li>
+  <li>this指向</li>
+  <li>创建两个对戏那个：重复代码过多</li>
+</ul>
+
+<p>```
+var arr = [];</p>
+
+<p>arr.number = 10;    //对象下面的变量，叫做对象的属性</p>
+
+<p>arr.length;</p>
+
+<p>arr.text = function(){    //对象下面的函数，叫做对象的方法
+    alert(123);
+}
+```</p>
+
+<p>```
+var obj = new Object();     //这是创建了一个空的对象</p>
+
+<p>obj.name = ‘zyx’;           //属性</p>
+
+<p>obj.showName = function(){  //方法
+    alert(obj.name);
+};
+```</p>
+
+<p>工厂模式</p>
+
+<ul>
+  <li>
+    <p>面向对象中的封装函数</p>
+  </li>
+  <li>改成与系统对象类似写法</li>
+  <li>首字母大写</li>
+  <li>new关键字提取</li>
+  <li>
+    <p>this指向为新对象的对象</p>
+  </li>
+  <li>构造函数</li>
+  <li>
+    <p>用来创建对象的函数，叫做构造函数</p>
+  </li>
+  <li>存在的问题</li>
+  <li>对象的引用
+-浪费内存</li>
+</ul>
+
+<p>```
+function createPerson(){
+    var obj = new Object();
+    obj.name = name;
+    obj.showName = function(){
+        alert(obj.name);
+    };
+    return obj;
+}
+var p1 = createPerson(‘zyx’);
+p1.showName();</p>
+
+<p>var p2 = createPerson(‘zyx2’);
+p2.showName();
+```</p>
+
+<p>当new去调用一个函数，这个时候函数中的this就是创建出来的对象，而且函数的返回值直接就是this了（隐式返回）</p>
+
+<p>new后面调用的函数，叫做构造函数</p>
+
+<p>```
+function CreatePerson(){
+    this.name = name;
+    this.showName = function(){
+        alert(this.name);
+    };
+}
+var p1 = new CreatePerson(‘zyx’);
+p1.showName();</p>
+
+<p>var p2 = new CreatePerson(‘zyx2’);
+p2.showName();</p>
+
+<p>alert(p1.showName == p2.showName);     //false
+```</p>
+
+<p><code class="highlighter-rouge">
+var a = [1,2,3];
+var b = [1,2,3];
+alert(a == b);     //false    对象类型：值和引用都相同才行
+</code></p>
+
+<p><code class="highlighter-rouge">
+var a = 5;
+var b = a;
+b += 3;
+alert(b);    //8
+alert(a);    //5     基本类型；赋值时只是值的复制
+</code></p>
+
+<p><code class="highlighter-rouge">
+var a = [1,2,3];
+var b = a;
+b.push(4);
+alert(b);    //1,2,3,4
+alert(a);    //1,2,3,4    对象类型：赋值不仅是指的复制，而且也是引用的传递
+</code></p>
+
+<p><code class="highlighter-rouge">
+var a = [1,2,3];
+var b = a;
+b = [1,2,3,4];
+alert(b);      //1,2,3,4
+alert(a);      //1,2,3
+</code></p>
+
+<p><code class="highlighter-rouge">
+var a = 5;
+var b = 5;
+alert(a == b);   //true   基本类型：值相同就可以
+</code></p>
+
+<p><code class="highlighter-rouge">
+var a = [1,2,3];
+var b = a;
+alert(a==b);     //true
+</code></p>
+
+<p>原型：去改写对象下面公用的方法或者属性，让公用的方法或属性在内存中只存在一份，提高性能。</p>
+
+<p>原型：CSS中的class</p>
+
+<p>普通方法：CSS中的style</p>
+
+<p>原型：prototype：要写在构造函数的下面</p>
+
+<p>概念</p>
+
+<ul>
+  <li>重写对象方法，让相同方法在内存中只存在一份（提高性能）</li>
+</ul>
+
+<p>学习原型</p>
+
+<ul>
+  <li>类比：CSS中的class</li>
+</ul>
+
+<p>通过原型改写工厂模式</p>
+
+<ul>
+  <li>原则：1、相同的属性和方法可以加载原型上
+     2、混合的编程模式</li>
+</ul>
+
+<p>总结面向对象写法</p>
+
+<ul>
+  <li>构造函数加属性，原型加方法</li>
+</ul>
+
+<p><code class="highlighter-rouge">
+var arr = [1,2,3,4,5];
+arr.sum = function(){
+    var result = 0;
+    for(var i=0;i&lt;arr.length;i++){
+        result += this[i];
+    }
+    return result;
+};
+alert(arr.sum());    //15
+</code></p>
+
+<p><code class="highlighter-rouge">
+var arr = [1,2,3,4,5];
+Array.prototype.sum = function(){
+    var result = 0;
+    for(var i=0;i&lt;this.length;i++){
+        result += this[i];
+    }
+    return result;
+};
+alert(arr.sum());
+</code></p>
+
+<p><code class="highlighter-rouge">
+function CreatePerson(name){
+    this.name = name;
+}
+CreatePerson.prototype.showName = function(){
+    alert(this.name);
+}
+var p1 = new CreatePerson('zyx');
+</code></p>
+
+<p>面向对象的写法</p>
+
+<p>```
+function 构造函数(){
+    this.属性
+}
+构造函数.原型.方法 = function(){</p>
+
+<p>}
+var 对象1 = new 构造函数();
+对象1.方法();
+```</p>
+
+
+
+                <hr>
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/09/13/miaov-ky/" data-toggle="tooltip" data-placement="top" title="妙味课堂——跨域">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+
+                
+
+                
+
+            </div>
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#生活" title="生活" rel="2">
+                                    生活
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#技术" title="技术" rel="7">
+                                    技术
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#工作总结" title="工作总结" rel="2">
+                                    工作总结
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#作品" title="作品" rel="1">
+                                    作品
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#笔记" title="笔记" rel="20">
+                                    笔记
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#学习jQuery源码" title="学习jQuery源码" rel="1">
+                                    学习jQuery源码
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://zhaoyixin.xyz">赵祎鑫</a></li>
+                    
+                        <li><a href="http://segmentfault.com/">segmentfault</a></li>
+                    
+                        <li><a href="http://div.io/">div.io</a></li>
+                    
+                        <li><a href="http://www.w3cfuns.com/">w3cfuns</a></li>
+                    
+                        <li><a href="https://github.com/">github</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/zhao-yi-xin-81">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://weibo.com/alhq1314">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/zhaoyixin">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 赵祎鑫 2016
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!-- Highlight.js -->
+<script>
+    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+        hljs.initHighlightingOnLoad();
+    })
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4954d96711a89075e45ad76cebc41374';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

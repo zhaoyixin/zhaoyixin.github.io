@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="开拓视野，冲破艰险，看见世界，身临其境，贴近彼此，感受生活，这就是生活的目的。">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>转：透过浏览器看HTTP缓存 - 赵祎鑫 | ZhaoYiXin</title>
+
+    <link rel="canonical" href="http://zhaoyixin.xyz/2016/02/18/http-hc/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">赵祎鑫</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-js-version.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/post-bg-js-version.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#技术" title="技术">技术</a>
+                        
+                    </div>
+                    <h1>转：透过浏览器看HTTP缓存</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by 赵祎鑫 on February 18, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<blockquote>
+  <p>注：本文转自<a href="http://www.cnblogs.com/skylar/p/browser-http-caching.html">大额_skylar</a>，一个非常可爱的前端妹子`(<em>∩_∩</em>)′，我个人对于浏览器缓存这方面一直比较薄弱，转发学习之~</p>
+</blockquote>
+
+<p>作为前端开发人员，对于我们的站点或应用的缓存机制我们能做的似乎不多，但这些却是与我们关注的性能息息相关的部分，站点没有做任何缓存机制，我们的页面可能会因为资源的下载和渲染变得很慢，但大家都知道去找前端去解决页面慢的问题而不会去找服务端的开发人员。因此，了解相关的缓存机制和充分的利用它似乎就变得必不可少。</p>
+
+<p>web端的缓存机制其实有多种，我在这里只是学习和整理了以浏览器为载体的HTTP缓存机制，看看它是如何工作的。</p>
+
+<h3 id="web">一、web缓存的种类</h3>
+
+<h5 id="section">1.1 数据库缓存</h5>
+
+<p>我们可能听说过memcached，它就是一种数据库层面的缓存方案。数据库缓存是指，当web应用的关系比较复杂，数据库中的表很多的时候，如果频繁进行数据库查询，很容易导致数据库不堪重荷。为了提供查询的性能，将查询后的数据放到内存中进行缓存，下次查询时，直接从内存缓存直接返回，提供响应效率。</p>
+
+<h5 id="cdn">1.2 CDN缓存</h5>
+
+<p>CDN缓存一般是由网站管理员自己部署，为了让他们的网站更容易扩展并获得更好的性能。通常情况下，浏览器先向CDN网关发起Web请求，网关服务器后面对应着一台或多台负载均衡源服务器，会根据它们的负载请求，动态将请求转发到合适的源服务器上。从浏览器角度来看，整个CDN就是一个源服务器，从这个层面来说，浏览器和服务器之间的缓存机制，在这种架构下同样适用。</p>
+
+<h5 id="section-1">1.3 代理服务器缓存</h5>
+
+<p>代理服务器是浏览器和源服务器之间的中间服务器，浏览器先向这个中间服务器发起Web请求，经过处理后（比如权限验证，缓存匹配等），再将请求转发到源服务器。代理服务器缓存的运作原理跟浏览器的运作原理差不多，只是规模更大。</p>
+
+<h5 id="section-2">1.4 浏览器缓存</h5>
+
+<p>每个浏览器都实现了 HTTP 缓存，我们通过浏览器使用HTTP协议与服务器交互的时候，浏览器就会根据一套与服务器约定的规则进行缓存工作。</p>
+
+<h5 id="section-3">1.5 应用层缓存</h5>
+
+<p>应用层缓存是指我们在代码层面上做的缓存。通过代码逻辑，把曾经请求过的数据或资源等，缓存起来，再次需要数据时通过逻辑上的处理选择可用的缓存的数据。</p>
+
+<h3 id="section-4">二、为什么需要浏览器缓存？我们需要做些什么？</h3>
+
+<p>我们知道通过HTTP协议，在客户端和浏览器建立连接时需要消耗时间，而大的响应需要在客户端和服务器之间进行多次往返通信才能获得完整的响应，这拖延了浏览器可以使用和处理内容的时间。这就增加了访问服务器的数据和资源的成本，因此利用浏览器的缓存机制重用以前获取的数据就变成了性能优化时需要考虑的事情。</p>
+
+<p>那么有什么建议吗？当然。</p>
+
+<p>为每个资源指定一个明确的缓存策略，用以定义资源是否可以缓存，由谁来缓存，可以缓存多久，并且在缓存时间到期时如何有效地重新验证。当服务器返回一个响应时，它需要在响应头中提供Cache-Control和ETag。</p>
+
+<p>说到浏览器中的缓存机制，其实就相当于HTTP协议定义的缓存机制，因为浏览器为我们实现了它。一般情况下我们会想到到HTTP响应头中的Expires，Cache-Control,Last-Modified.If-Modified-Since,Etag这样的与缓存相关的响应头信息。</p>
+
+<p>但是这里我们说服务器返回一个响应时提供必要的Cache-Control和Etag即可。这是为什么呢？</p>
+
+<p>因为Cache-Control与Expires的作用一致，<code class="highlighter-rouge">Last-Modified与ETag的作用也相近。但它们有以下区别：</code></p>
+
+<p><img src="http://zhaoyixin.xyz/img/2016-02-18-http-hc-1.png" /></p>
+
+<p>现在默认浏览器均默认使用HTTP 1.1，所以Expires和Last-Modified的作用基本可以忽略，具备Cache-Control和Etag即可。</p>
+
+<p>当然用户的行为也会影响浏览器的缓存，像这样：</p>
+
+<p><img src="http://zhaoyixin.xyz/img/2016-02-18-http-hc-2.png" /></p>
+
+<p>但我们先不考虑用户的操作的影响，来看看服务器提供Cache-Control和ETag响应头来进行的缓存是如何工作的。</p>
+
+<h3 id="etaghttp">三、使用Etag验证缓存的HTTP响应</h3>
+
+<p>通常情况下，请求一个资源的过程大概是这样的：</p>
+
+<p><img src="http://zhaoyixin.xyz/img/2016-02-18-http-hc-3.png" /></p>
+
+<p>我在<a href="http://www.cnblogs.com/skylar/p/ajaxCORS.html">再看Ajax</a>中整理了HTTP请求的请求头和响应头的一些参数，这里就看下Etag的作用。</p>
+
+<h5 id="etag">3.1 Etag的主要作用</h5>
+
+<p>服务器通过 ETag HTTP 头传递验证码，大概是像‘‘x123cef’’这样的字符串。当浏览器在资源过期后再次请求时，浏览器默认会通过If-None-Match传递Etag的验证码，通过验证码可以进行高效的资源更新检查：如果资源未更改，则不会传输任何数据。</p>
+
+<p>Etag就主要用来在响应过期之后，验证资源是否被修改。</p>
+
+<h5 id="etag-1">3.2 Etag的工作原理</h5>
+
+<p>如上图，服务器在第一次返回响应的时候设置了缓存的时间120s，假设浏览器在这120s经过之后再次请求服务器相同的资源，首先，浏览器会检查本地缓存并找到之前的响应，不幸的是，这个响应现在已经’过期’，无法在使用。此时，浏览器也可以直接发出新请求，获取新的完整响应，但是这样做效率较低，因为如果资源未被更改过，我们就没有理由再去下载与缓存中已有的完全相同的字节。</p>
+
+<p>于是就到了Etag发挥作用的时候了，通常服务器生成并返回在Etag中的验证码，常常是文件内容的哈希值或者某个其他指纹码。客户端不必了解指纹码是如何生成的，只需要在下一个请求中将其发送给服务器(浏览器默认会添加)：如果指纹码仍然一致，说明资源未被修改，服务器会反悔304 Not Modified，这样我们就可以跳过下载，利用已经缓存了的资源，并且该资源会继续缓存120s。就像这样：</p>
+
+<p><img src="http://zhaoyixin.xyz/img/2016-02-18-http-hc-4.png" /></p>
+
+<h3 id="cache-controlcache-control">四、什么是Cache-Control？如何定义Cache-Control？</h3>
+
+<p>服务器响应浏览器请求时响应头中的Cache-Control响应头使得每个资源都可以通过 Cache-Control HTTP 头来定义自己的缓存策略，Cache-Control 指令用来告诉我们，那个资源在什么条件下可以缓存，以及可以缓存多久。</p>
+
+<h5 id="cache-controlcache-control-1">4.1 Cache-Control头参数的含义(响应头中的Cache-Control)</h5>
+
+<ul>
+  <li>no-cache：表示必须先与服务器确认返回的响应是否被更改，然后才能使用该响应来满足后续对同一个网址的请求。因此，如果存在合适的验证令牌 (ETag)，no-cache 会发起往返通信来验证缓存的响应，如果资源未被更改，可以避免下载。</li>
+  <li>no-store：禁止缓存任何响应，也就是说每次用户请求资源时，都会向服务器发送一个请求，每次都会下载完整的响应。</li>
+  <li>public：如果响应被标记为public，即使有关联的 HTTP 认证，甚至响应状态码无法正常缓存，响应也可以被缓存。</li>
+  <li>private：浏览器可以缓存private响应，但是通常只为单个用户缓存，因此，不允许任何代理服务器对其进行缓存 。比如，用户浏览器可以缓存包含用户私人信息的 HTML 网页，但是 CDN 不能缓存。</li>
+  <li>max-age：用来设置资源被缓存的最长时间(单位是秒)。</li>
+</ul>
+
+<h5 id="cache-control">4.2 如何使用Cache-Control</h5>
+
+<p>通常，我们可以通过下图的流程来设置合适的响应头的Cache-Control头。</p>
+
+<p><img src="http://zhaoyixin.xyz/img/2016-02-18-http-hc-5.png" /></p>
+
+<h3 id="section-5">五、已经缓存的响应，如何更新或废弃？</h3>
+
+<p>一般情况下，浏览器发出的所有 HTTP 请求会首先被路由到浏览器的缓存，以查看是否缓存了可以用于实现请求的有效响应。如果有匹配的响应，会直接从缓存中读取响应，这样就避免了网络延迟以及传输产生的数据成本。然而，如果我们希望更新或废弃已缓存的响应，该怎么办？</p>
+
+<p>假设我们已经告诉访问者某个 CSS 样式表缓存长达 24 小时 (max-age=86400)，但是设计人员刚刚提交了一个更新，我们希望所有用户都能使用。我们该如何通知所有访问者缓存的 CSS 副本已过时，需要更新缓存？</p>
+
+<p>实际上以前没有请求过该资源的新的用户会得到更新的资源，但是请求过资源的用户将在过期时间达到之前一直得到旧的被缓存的资源，直到他手动的去清理了浏览器的缓存。手动清理浏览器缓存这种事可能只有程序员才会做，那么我们要怎么做才能让用户得到更新后的资源呢？</p>
+
+<p>其实很简单，我们可以在资源的内容更改后，更改资源的网址，强制用户下载新响应。比如在资源链接后添加参数：</p>
+
+<p><img src="http://zhaoyixin.xyz/img/2016-02-18-http-hc-6.png" /></p>
+
+<h3 id="section-6">六、对于缓存机制，现在可以做的有哪些？</h3>
+
+<p>我在浏览资料的时候发现了一个caching checklist，比较具有参考价值，我们可以遵循建议合理的利用缓存机制：</p>
+
+<ul>
+  <li>使用一致的网址：如果在不同的网址上提供相同的内容，那么将会多次获取和存储相同的内容。提示：网址是区分大小写的！</li>
+  <li>确保服务器提供验证码 (ETag)：通过验证码，如果服务器上的资源未被更改，就不必传输相同的字节。</li>
+  <li>确定代理缓存可以缓存哪些资源：对所有用户的响应完全相同的资源很适合由 CDN 或其他代理缓存进行缓存。</li>
+  <li>确定每个资源的最优缓存周期：不同的资源可能有不同的更新要求。审查并确定每个资源适合的 max-age。</li>
+  <li>确定网站的最佳缓存层级：对 HTML 文档组合使用包含内容指纹码的资源网址以及短时间或 no-cache 的生命周期，可以控制客户端获取更新的速度。</li>
+  <li>变动最小化：有些资源的更新比其他资源频繁。如果资源的特定部分（例如 JavaScript 函数或一组 CSS 样式）会经常更新，应考虑将其代码作为单独的文件提供。这样，每次获取更新时，剩余内容（例如不会频繁更新的库代码）可以从缓存中获取，确保下载的内容量最少。</li>
+</ul>
+
+
+                <hr>
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/02/18/for-xhsx/" data-toggle="tooltip" data-placement="top" title="转：For循环中分号隔开的3部分的执行顺序探讨">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/02/22/workZJ/" data-toggle="tooltip" data-placement="top" title="jQuery全屏滚动插件fullPage.js使用总结">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+
+            </div>
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#生活" title="生活" rel="2">
+                                    生活
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#技术" title="技术" rel="7">
+                                    技术
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#工作总结" title="工作总结" rel="2">
+                                    工作总结
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#作品" title="作品" rel="1">
+                                    作品
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#笔记" title="笔记" rel="20">
+                                    笔记
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#学习jQuery源码" title="学习jQuery源码" rel="1">
+                                    学习jQuery源码
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://zhaoyixin.xyz">赵祎鑫</a></li>
+                    
+                        <li><a href="http://segmentfault.com/">segmentfault</a></li>
+                    
+                        <li><a href="http://div.io/">div.io</a></li>
+                    
+                        <li><a href="http://www.w3cfuns.com/">w3cfuns</a></li>
+                    
+                        <li><a href="https://github.com/">github</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/zhao-yi-xin-81">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://weibo.com/alhq1314">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/zhaoyixin">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 赵祎鑫 2016
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!-- Highlight.js -->
+<script>
+    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+        hljs.initHighlightingOnLoad();
+    })
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4954d96711a89075e45ad76cebc41374';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

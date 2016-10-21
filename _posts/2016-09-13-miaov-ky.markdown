@@ -1,0 +1,37 @@
+---
+layout:     post
+title:      "妙味课堂——跨域"
+date:       2016-09-13
+author:     "赵祎鑫"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - 笔记
+---
+
+javascript中的跨域
+
+1、document.domain = 'a.com';
+
+2、服务器代理：XMLHttpRequest代理文件
+
+3、script标签：jsonp
+
+jsonp ： json +　padding(内填充)
+
+```
+function box(json){
+    alert(json.name);    //miaov
+}
+box{{name:'miaov'}};
+```
+
+4、location.hash
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,90 @@
+---
+layout:     post
+title:      "学习jQuery源码（一）"
+date:       2016-04-11
+author:     "赵祎鑫"
+header-img: "img/post-bg-jquery-version.jpg"
+tags:
+    - 学习jQuery源码
+---
+
+#### 简化jQuery框架
+
+```
+(function(){         //匿名函数自执行
+    (21-94) 定义了一些变量和函数 jQuery = function(){};
+    
+    (96-280) 给jQuery对象添加一些方法和属性
+    
+    (285-347) extend：jQuery的继承方法
+    
+    (349-817) jQuery.extend()：扩展一些工具方法
+    
+    (877-2856) Sizzle：复杂选择器的实现
+    
+    (2880-3042) Callbacks：回调对象，对函数的统一管理
+    
+    (3043-3183) Deferred：延迟对象，对异步的统一管理
+    
+    (3184-3295) support：功能检测
+    
+    (3308-3652) data()：数据缓存
+    
+    (3653-3797) queue()/dequeue()：队列管理
+    
+    (3803-4299) attr()、prop()、val()、addClass()等方法：对元素属性的操作
+    
+    (4300-5139) on()、trigger()等方法：事件操作的相关方法
+    
+    (5140-6057) DOM操作的相关方法：添加、删除、获取、包装、DOM筛选等
+    
+    (6058-6620) css()：样式的操作
+    
+    (6621-7854) 提交的数据和ajax()的操作：ajax()、load()、getJson()等
+    
+    (7855-8584) animate()/show()/hide()等：运动的方法
+    
+    (8585-8792) offset()、scrollTop()等：位置与尺寸的方法
+    
+    (8804-8821) jQuery支持模块化的模式
+    
+    (8826)  window.jQuery = window.$ = jQuery;
+})();
+```
+
+#### jQuery原型的写法
+
+一般原型的写法：
+
+```
+function Aaa(){}
+
+Aaa.prototype.init = function(){};
+
+Aaa.prototype.css = function(){}; 
+
+var a1 = new Aaa();
+
+a1.init();
+
+a1.css();
+```
+
+jQuery原型的写法：
+
+```
+function jQuery(){
+    return new jQuery.prototype.init();
+};
+
+jQuery.prototype.init = function(){};
+
+jQuery.prototype.css = function(){};
+
+jQuery.prototype.init.prototype = jQuery.prototype;
+
+jQuery().css();
+```
+
+
+

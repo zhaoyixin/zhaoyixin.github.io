@@ -1,0 +1,266 @@
+---
+layout:     post
+title:      "妙味课堂——javaScript面向对象"
+date:       2016-09-18
+author:     "赵祎鑫"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - 笔记
+---
+
+什么是面向对象编程
+
+用对象的思想去写代码，就是面向对象编程
+
+- 过程式写法
+
+- 面向对象写法
+
+我们一直都在使用对象
+
+- 数组 Array 时间 Date
+
+面向对象编程（OOP）的特点
+
+- 抽象：抓住核心问题
+
+- 封装：只能通过对象来访问方法
+
+- 继承：从已有对象上继承出新的对象
+
+- 多态：多对象的不同形态
+
+```
+var arr = new Array();    //我们把系统自带的对象，叫做系统对象
+
+var date = new Date();
+
+arr.length;
+
+arr.push;
+
+arr.sort();
+
+date.getDate();
+
+var t1 = new Tab();
+
+t1.over();
+
+t1.autoPlay();
+```
+
+对象的组成
+
+- 方法（行为、操作）——函数：过程、动态的
+
+- 属性——变量：状态、静态的
+
+创建第一个面向对象程序
+
+- 为对象添加属性和方法
+
+- Object
+- this指向
+- 创建两个对戏那个：重复代码过多
+
+```
+var arr = [];
+
+arr.number = 10;    //对象下面的变量，叫做对象的属性
+
+arr.length;
+
+arr.text = function(){    //对象下面的函数，叫做对象的方法
+    alert(123);
+}
+```
+
+```
+var obj = new Object();     //这是创建了一个空的对象
+
+obj.name = 'zyx';           //属性
+
+obj.showName = function(){  //方法
+    alert(obj.name);
+};
+```
+
+工厂模式
+
+- 面向对象中的封装函数
+
+- 改成与系统对象类似写法
+- 首字母大写
+- new关键字提取
+- this指向为新对象的对象
+
+- 构造函数
+- 用来创建对象的函数，叫做构造函数
+
+- 存在的问题
+- 对象的引用
+-浪费内存
+
+```
+function createPerson(){
+    var obj = new Object();
+    obj.name = name;
+    obj.showName = function(){
+        alert(obj.name);
+    };
+    return obj;
+}
+var p1 = createPerson('zyx');
+p1.showName();
+
+var p2 = createPerson('zyx2');
+p2.showName();
+```
+
+当new去调用一个函数，这个时候函数中的this就是创建出来的对象，而且函数的返回值直接就是this了（隐式返回）
+
+new后面调用的函数，叫做构造函数
+
+```
+function CreatePerson(){
+    this.name = name;
+    this.showName = function(){
+        alert(this.name);
+    };
+}
+var p1 = new CreatePerson('zyx');
+p1.showName();
+
+var p2 = new CreatePerson('zyx2');
+p2.showName();
+
+alert(p1.showName == p2.showName);     //false
+```
+
+```
+var a = [1,2,3];
+var b = [1,2,3];
+alert(a == b);     //false    对象类型：值和引用都相同才行
+```
+
+```
+var a = 5;
+var b = a;
+b += 3;
+alert(b);    //8
+alert(a);    //5     基本类型；赋值时只是值的复制
+```
+
+```
+var a = [1,2,3];
+var b = a;
+b.push(4);
+alert(b);    //1,2,3,4
+alert(a);    //1,2,3,4    对象类型：赋值不仅是指的复制，而且也是引用的传递
+```
+
+```
+var a = [1,2,3];
+var b = a;
+b = [1,2,3,4];
+alert(b);      //1,2,3,4
+alert(a);      //1,2,3
+```
+
+```
+var a = 5;
+var b = 5;
+alert(a == b);   //true   基本类型：值相同就可以
+```
+
+```
+var a = [1,2,3];
+var b = a;
+alert(a==b);     //true
+```
+
+原型：去改写对象下面公用的方法或者属性，让公用的方法或属性在内存中只存在一份，提高性能。
+
+原型：CSS中的class
+
+普通方法：CSS中的style
+
+原型：prototype：要写在构造函数的下面
+
+概念
+
+- 重写对象方法，让相同方法在内存中只存在一份（提高性能）
+
+学习原型
+
+- 类比：CSS中的class
+
+通过原型改写工厂模式
+
+- 原则：1、相同的属性和方法可以加载原型上
+       2、混合的编程模式
+       
+总结面向对象写法
+
+- 构造函数加属性，原型加方法
+
+```
+var arr = [1,2,3,4,5];
+arr.sum = function(){
+    var result = 0;
+    for(var i=0;i<arr.length;i++){
+        result += this[i];
+    }
+    return result;
+};
+alert(arr.sum());    //15
+```
+
+```
+var arr = [1,2,3,4,5];
+Array.prototype.sum = function(){
+    var result = 0;
+    for(var i=0;i<this.length;i++){
+        result += this[i];
+    }
+    return result;
+};
+alert(arr.sum());
+```
+
+```
+function CreatePerson(name){
+    this.name = name;
+}
+CreatePerson.prototype.showName = function(){
+    alert(this.name);
+}
+var p1 = new CreatePerson('zyx');
+```
+
+面向对象的写法
+
+```
+function 构造函数(){
+    this.属性
+}
+构造函数.原型.方法 = function(){
+    
+}
+var 对象1 = new 构造函数();
+对象1.方法();
+```
+
+
+
+
+
+
+
+
+
+
+
+
+

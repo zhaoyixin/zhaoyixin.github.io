@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
+    <style>
+        body { background:#f1f1f1; }
+        div { width:800px; position:relative; top:40px; }
+        img { width:80px; height:80px; float:left; border:10px solid #fff; margin:4px 4px 0 0; transition:0.3s; border-radius:50%; }
+        .active {border:10px solid yellow; border-radius:10%; -webkit-transform:scale(1.2); }
+        img:hover { -webkit-transform:scale(1.2); }
+    </style>
+</head>
+<body>
+<input type="button" value="生成1张图片" />
+<input type="button" value="奇数" />
+<input type="button" value="偶数" />
+<input type="button" value="奇数横排" />
+<input type="button" value="偶数横排" />
+<input type="button" value="奇数竖排" />
+<input type="button" value="偶数竖排" />
+<div>
+    <img src="1.jpg" />
+    <img src="1.png" />
+    <img src="2.jpg" />
+    <img src="2.png" />
+    <img src="3.jpg" />
+    <img src="3.png" />
+    <img src="2.jpg" />
+    <img src="2.png" />
+    <img src="3.jpg" />
+    <img src="3.png" />
+    <img src="2.jpg" />
+    <img src="2.png" />
+    <img src="3.jpg" />
+    <img src="3.png" />
+    <img src="2.jpg" />
+    <img src="2.png" />
+    <img src="3.jpg" />
+    <img src="3.png" />
+</div>
+<script>
+    window.onload = function(){
+        var arr = ["1.jpg" ,
+            "1.png" ,
+            "2.jpg" ,
+            "2.png" ,
+            "3.jpg" ,
+            "3.png" ,
+            "4.jpg" ,
+            "5.jpg" ,
+            "6.jpg" ,
+            "6-1.jpg",
+            "6-2.jpg",
+            "6-3.jpg",
+            "6-4.jpg",
+            "6-5.jpg",
+            "7.jpg" ,
+            "8.jpg" ,
+            "big.jpg",
+            "1.jpg" ,
+            "1.png" ,
+            "2.jpg" ,
+            "2.png" ,
+            "3.jpg" ,
+            "3.png" ,
+            "4.jpg" ];
+        var aBtn = document.getElementsByTagName('input');
+        var oDiv = document.getElementsByTagName('div')[0];
+        var aImg = document.getElementsByTagName('img');
+        var num = 0;
+        var str = '';
+
+        function fnClear(){
+            for(var i=0;i<aImg.length;i++){
+                aImg[i].className = '';
+            }
+        }
+
+        aBtn[0].onclick = function(){
+            fnClear();
+            num++;
+            oDiv.innerHTML += '<img src="'+ arr[num%arr.length] +'" />';
+        };
+
+        aBtn[1].onclick = function(){
+            fnClear();
+            for(var i=1;i<aImg.length;i+=2){
+                aImg[i].className = 'active';
+            }
+        };
+
+        aBtn[2].onclick = function(){
+            fnClear();
+            for(var i=0;i<aImg.length;i+=2){
+                aImg[i].className = 'active';
+            }
+        };
+
+        aBtn[3].onclick = function(){
+            fnClear();
+            for (var i=0; i<aImg.length; i++) {
+                if ( Math.floor(i/7) % 2 ) {
+                    aImg[i].className = 'active';
+                }
+            }
+        };
+
+        aBtn[4].onclick = function(){
+            fnClear();
+            for(var i=0;i<aImg.length;i++){
+                if ( Math.floor(i/7) % 2 == 0 ) {
+                    aImg[i].className = 'active';
+                }
+            }
+        };
+
+        aBtn[5].onclick = function() {
+            fnClear();
+            for (var i=0; i<aImg.length; i++) {
+                if ( i%7%2 == 1 ) {
+                    aImg[i].className = 'active';
+                }
+            }
+        };
+
+        aBtn[6].onclick = function() {
+            fnClear();
+
+            for (var i=0; i<aImg.length; i++) {
+                if ( i%7%2 == 0 ) {
+                    aImg[i].className = 'active';
+                }
+            }
+        };
+    };
+</script>
+</body>
+</html>
+
+

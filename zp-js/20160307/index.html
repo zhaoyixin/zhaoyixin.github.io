@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动生成100个li</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            margin-top: 10px;
+            list-style: none;
+            white-space: nowrap;
+            position: relative;
+        }
+        ul li {
+            border: 1px solid black;
+            height: 50px;
+            width: 50px;
+            display: inline-block;
+            line-height: 50px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+
+            var oBtn = document.getElementById('btn');
+            var oUl = document.getElementById('list');
+            var len = 100;
+            var html = '';
+            aColor = ['red', 'yellow', 'blue', 'green'];
+
+            oBtn.onclick = function(){
+
+                for(var i=0; i<len; i++){
+                    html += '<li style="top: '+ Math.floor(i/10) * 55 +'px; left: '+ i%10 * 55 +'px; background-color: '+ aColor[i%aColor.length] +'">'+ i +'</li>'
+                }
+
+                oUl.innerHTML = html;
+
+            }
+        };
+    </script>
+</head>
+<body>
+<input id="btn" type="button" value="自动生成100个li" />
+<ul id="list"></ul>
+</body>
+</html>

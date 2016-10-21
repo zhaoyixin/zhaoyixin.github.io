@@ -1,0 +1,40 @@
+---
+layout:     post
+title:      "jQuery全屏滚动插件fullPage.js使用总结"
+date:       2016-02-22
+author:     "赵祎鑫"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - 工作总结
+---
+
+> 今天在使用jQuery插件[fullPage.js](https://github.com/alvarotrigo/fullPage.js)时遇到了一个坑~特来总结一下，提醒自己以后注意~
+
+在fullpage.js这个插件中，有一个方法是`setAllowScrolling()，这个方法的作用是添加或删除鼠标滚轮/触控板控制`。
+
+#### setAllowScrolling(boolean, [directions])
+
+[Demo](http://codepen.io/alvarotrigo/pen/EjeNdq) Adds or remove the possibility of scrolling through sections by using the mouse wheel/trackpad or touch gestures (which is active by default). Note this won't disable the keyboard scrolling. You would need to use setKeyboardScrolling for it.
+
+ * directions: (optional parameter) Admitted values: all, up, down, left, right or a combination of them separated by commas like down, right. It defines the direction for which the scrolling will be enabled or disabled.
+ 
+```
+//disabling scrolling
+$.fn.fullpage.setAllowScrolling(false);
+ 
+//disabling scrolling down
+$.fn.fullpage.setAllowScrolling(false, 'down');
+ 
+//disabling scrolling down and right
+$.fn.fullpage.setAllowScrolling(false, 'down, right');
+``` 
+
+在使用的过程中，只有`$.fn.fullpage.setAllowScrolling(false);`这个命令是正确的，如果要单独添加或者删除向上或者向下的滚动，则会全部禁止滚动。
+
+我已经在各种jquery版本中测试，fullpage.js也更新到了最新版，均无解。。。
+
+由于为了快速出活儿，没时间细细琢磨具体的原因，过两天不忙的时候一定要弄明白之~
+
+
+
+

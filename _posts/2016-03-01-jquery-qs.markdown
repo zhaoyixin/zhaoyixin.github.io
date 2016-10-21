@@ -1,0 +1,129 @@
+---
+layout:     post
+title:      "jquery方法toggle()问题"
+date:       2016-03-01
+author:     "赵祎鑫"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - 技术
+---
+
+> 昨天在制作一个页面时，遇到了一个jquery的toggle()问题，拿来跟大家分享，坑还是挺深的~
+
+我们先来看一下jquery的toggle()方法
+
+#### toggle([speed],[easing],[fn])
+
+##### 概述
+
+用于绑定两个或多个事件处理器函数，以响应被选元素的轮流的 click 事件。如果元素是可见的，切换为隐藏的；如果元素是隐藏的，切换为可见的。
+
+##### 参数
+
+<img src="http://zhaoyixin.xyz/img/2016-03-01-jquery-qs-1.png"/>
+
+##### 示例
+
+ * 无参数描述：对表格切换显示/隐藏
+jQuery代码
+
+```
+$('td).toggle();
+```
+
+ * fn,fn2描述：对表格的切换一个类
+jQuery代码
+
+```
+$("td").toggle(
+  function () {
+    $(this).addClass("selected");
+  },
+  function () {
+    $(this).removeClass("selected");
+  }
+);
+```
+
+ * speed描述：用600毫秒的时间将段落缓慢的切换显示状态
+jQuery代码
+
+```
+$("p").toggle("slow");
+```
+
+ * speed、fn描述：用200毫秒将段落迅速切换显示状态，之后弹出一个对话框。
+jQuery代码
+
+```
+$("p").toggle("fast",function(){
+   alert("Animation Done.");
+ });
+```
+
+ * switch参数描述：如果这个参数为true ，那么匹配的元素将显示;如果false ，元素是隐藏的
+jQuery代码
+
+```
+$('#foo').toggle(showOrHide);
+
+//相当于
+if (showOrHide) {
+  $('#foo').show();
+} else {
+  $('#foo').hide();
+}      
+```
+
+#### 问题描述
+
+jQuery1.9之后的版本，删除了toggle方法。所以如果您载入的jQuery版本是1.9以上的版本，使用toggle()会报错。但是用几种解决方法：
+
+##### 插件
+
+下面这个jQuery插件能够还原1.8的toggle的功能，如果你需要，可以直接把下面这段代码拷贝到你的jQuery里面，然后跟平时一样使用toggle的功能即可。
+
+```
+//toggle plugin from caibaojian.com
+$.fn.toggler = function( fn, fn2 ) {
+    var args = arguments,guid = fn.guid || $.guid++,i=0,
+    toggler = function( event ) {
+      var lastToggle = ( $._data( this, "lastToggle" + fn.guid ) || 0 ) % i;
+      $._data( this, "lastToggle" + fn.guid, lastToggle + 1 );
+      event.preventDefault();
+      return args[ lastToggle ].apply( this, arguments ) || false;
+    };
+    toggler.guid = guid;
+    while ( i < args.length ) {
+      args[ i++ ].guid = guid;
+    }
+    return this.click( toggler );
+  };
+```
+
+##### 替换
+
+我们也可以这样子修改~
+
+```
+$('#example').click(function(){$("#exampleBox").toggle();})
+改为
+$('#example').click(function(){
+    if($("#exampleBox").is(":visible")){
+        $("#exampleBox").hide();
+        do stuff
+    }else{
+        $("#exampleBox").show();
+        do stuff
+    }
+})
+$("#example").hover(function(){$("#exampleBox").toggle(); })
+改为
+$("#example").hover(function(){
+$("#exampleBox").show();
+},function(){
+$("#exampleBox").hide();
+});
+```
+
+岂不是更加清晰明了了~

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="开拓视野，冲破艰险，看见世界，身临其境，贴近彼此，感受生活，这就是生活的目的。">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>javascript小练习 - 赵祎鑫 | ZhaoYiXin</title>
+
+    <link rel="canonical" href="http://zhaoyixin.xyz/2016/03/01/zp-js/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">赵祎鑫</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-js-version.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/post-bg-js-version.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#作品" title="作品">作品</a>
+                        
+                    </div>
+                    <h1>javascript小练习</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by 赵祎鑫 on March 1, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>争取每天至少一个小作品练习~</p>
+
+<p>等JS练得差不多了，就去搞定node.js~</p>
+
+<p>今年的任务就是这些~</p>
+
+<h4 id="section">基本样式设置</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160301/index.html">DEMO</a></p>
+
+<h4 id="section-1">图片轮播的两种方式</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160303/index.html">DEMO</a></p>
+
+<h4 id="section-2">模拟手机信息发送</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160304/index.html">DEMO</a></p>
+
+<h4 id="li">自动生成10个li标签</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160305/index.html">DEMO</a></p>
+
+<h4 id="li-1">自动生成100个li标签</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160307/index.html">DEMO</a></p>
+
+<h4 id="section-3">图片随鼠标移动不断出现</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160308/index.html">DEMO</a></p>
+
+<h4 id="section-4">弹出提示框（兼容浏览器）</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160309/index.html">DEMO</a></p>
+
+<p>在做这个例子的时候，发现<code class="highlighter-rouge">getElementByTagName</code>这个属性如果要获取某个标签，需要<code class="highlighter-rouge">getElementByTagName[0]</code>书写。</p>
+
+<p>哪怕是这样的DOM结构</p>
+
+<p>```</p>
+<li>
+    <span></span>
+    <span>说明1</span>
+    <div class="popup">弹窗1</div>
+</li>
+<p>```</p>
+
+<p>看来自己对原生javaScript理解的还是不够透彻啊~</p>
+
+<p>多加学习~</p>
+
+<p>准备再看一遍<a href="http://item.jd.com/10951037.html">javaScript高级程序设计（第三版）</a>赋上链接~</p>
+
+<h4 id="section-5">选项卡交叉同步走</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160310/index.html">DEMO</a></p>
+
+<h4 id="section-6">奇偶横竖排判断</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160311/index.html">DEMO</a></p>
+
+<h4 id="qq">QQ列表展开收缩拓展</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160313/index.html">DEMO</a></p>
+
+<h4 id="section-7">带缩略图的图片切换效果</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160314/index.html">DEMO</a></p>
+
+<h4 id="qq-1">QQ列表展开效果</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160315/index.html">DEMO</a></p>
+
+<h4 id="section-8">数据类型判断——找到合适的值</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160316/index.html">DEMO</a></p>
+
+<h4 id="qq-2">QQ号码判断</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160321/index.html">DEMO</a></p>
+
+<h4 id="section-9">修改文本框的值</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160328/index.html">DEMO</a></p>
+
+<h4 id="section-10">搜狐视频记录片列表展示</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160329/index.html">DEMO</a></p>
+
+<h4 id="section-11">选项卡中套选项卡</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160330/index.html">DEMO</a></p>
+
+<h4 id="section-12">下拉联动菜单——面向对象版</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160331/index.html">DEMO</a></p>
+
+<h4 id="javascript">javascript分页效果</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160331-2/index.html">DEMO</a></p>
+
+<h4 id="section-13">百度文库评分效果</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160401/index.html">DEMO</a></p>
+
+<h4 id="section-14">百度音乐全选效果</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160405/index.html">DEMO</a></p>
+
+<h4 id="javascriptdiv">javascript切换div中数字</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160405-2/index.html">DEMO</a></p>
+
+<h4 id="javascriptdiv-1">javascript切换div</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160405-3/index.html">DEMO</a></p>
+
+<h4 id="section-15">延时消失的菜单</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160406/index.html">DEMO</a></p>
+
+<h4 id="section-16">淘宝商品广告效果</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160408/index.html">DEMO</a></p>
+
+<h4 id="section-17">百叶窗效果</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160408-2/index.html">DEMO</a></p>
+
+<h4 id="section-18">自动轮换选项卡</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160411/index.html">DEMO</a></p>
+
+<h4 id="section-19">点击往下掉，再点击飘回来</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160418/index.html">DEMO</a></p>
+
+<h4 id="section-20">点击加分效果-可重复点击</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160419/index.html">DEMO</a></p>
+
+<h4 id="section-21">留言板，限制条数</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160420/index.html">DEMO</a></p>
+
+<h4 id="section-22">图片排序</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160421/index.html">DEMO</a></p>
+
+<h4 id="section-23">回到顶部</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160422/index.html">DEMO</a></p>
+
+<h4 id="section-24">拖拽回放</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160425/index.html">DEMO</a></p>
+
+<h4 id="section-25">检测重合</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160427/index.html">DEMO</a></p>
+
+<h4 id="section-26">淡入淡出图片</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160503/index.html">DEMO</a></p>
+
+<h4 id="section-27">侧栏分享淡入淡出</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160504/index.html">DEMO</a></p>
+
+<h4 id="section-28">模拟钟摆运动</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160505/index.html">DEMO</a></p>
+
+<h4 id="section-29">仿苹果系统文件倒影展示效果</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160913/index.html">DEMO</a></p>
+
+<h4 id="section-30">分页特效</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160913-2/index.html">DEMO</a></p>
+
+<h4 id="section-31">轮播图</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160914-1/index.html">DEMO</a></p>
+
+<h4 id="section-32">百叶窗效果</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160914-2/index.html">DEMO</a></p>
+
+<h4 id="section-33">面向对象选项卡</h4>
+
+<p><a href="http://zhaoyixin.xyz/zp-js/20160918-1/index.html">DEMO</a></p>
+
+
+
+                <hr>
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/03/01/jquery-qs/" data-toggle="tooltip" data-placement="top" title="jquery方法toggle()问题">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/03/21/js-miaov-1/" data-toggle="tooltip" data-placement="top" title="javaScript基础笔记——json">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+
+            </div>
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#生活" title="生活" rel="2">
+                                    生活
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#技术" title="技术" rel="7">
+                                    技术
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#工作总结" title="工作总结" rel="2">
+                                    工作总结
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#作品" title="作品" rel="1">
+                                    作品
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#笔记" title="笔记" rel="20">
+                                    笔记
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#学习jQuery源码" title="学习jQuery源码" rel="1">
+                                    学习jQuery源码
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://zhaoyixin.xyz">赵祎鑫</a></li>
+                    
+                        <li><a href="http://segmentfault.com/">segmentfault</a></li>
+                    
+                        <li><a href="http://div.io/">div.io</a></li>
+                    
+                        <li><a href="http://www.w3cfuns.com/">w3cfuns</a></li>
+                    
+                        <li><a href="https://github.com/">github</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/zhao-yi-xin-81">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://weibo.com/alhq1314">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/zhaoyixin">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 赵祎鑫 2016
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!-- Highlight.js -->
+<script>
+    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+        hljs.initHighlightingOnLoad();
+    })
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4954d96711a89075e45ad76cebc41374';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

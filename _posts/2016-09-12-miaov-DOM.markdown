@@ -1,0 +1,79 @@
+---
+layout:     post
+title:      "妙味课堂——DOM"
+date:       2016-09-12
+author:     "赵祎鑫"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - 笔记
+---
+
+DOM:Document Object Model 文档对象模型
+
+文档：HTML页面
+
+文档对象：页面中元素
+
+文档对象模型：定义 为了能够让程序（JS）去操作页面中的元素
+
+DOM会把文档看作是一棵树，同时定义了很多方法来操作这棵树中的每一个元素（节点）
+
+#### childNodes
+
+只读属性 子节点列表集合
+
+DOM节点的类型有很多种 12种 元素节点 文本节点
+
+```
+oUl.childNodes.length;
+```
+
+#### attributes
+
+属性 属性列表集合
+
+```
+oUl.attributes.length;
+```
+
+#### 可视区的尺寸
+
+```
+document.documentElement.clientWidth
+document.documentElement.clientHeight
+```
+
+#### 滚动距离
+
+```
+var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+```
+
+#### 内容高度
+
+```
+oDiv.scrollWidth;
+oDiv.scrollHeight;
+```
+
+#### 文档高度
+
+```
+document.documentElement.offsetWidth;
+document.documentElement.offsetHeight;
+```
+
+#### 两个事件
+
+```
+onscroll : 当滚动条滚动的时候触发
+onresize : 当窗口大小发生改变时触发
+```
+
+
+
+
+
+
+

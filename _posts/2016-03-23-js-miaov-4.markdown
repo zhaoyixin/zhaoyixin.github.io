@@ -1,0 +1,48 @@
+---
+layout:     post
+title:      "javaScript——DOM"
+date:       2016-03-23
+author:     "赵祎鑫"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - 笔记
+---
+
+#### DOM概念
+
+DOM：Document Object Model(文档对象模型)
+
+文档：html页面
+
+文档对象：html页面中的元素
+
+文档对象模型：定义 为了能够让程序(javascript)去操作页面中的元素，而定义出来的一套标准。
+
+DOM会把文档看作一个DOM树状结构，树中的每一个标签 元素就是一个DOM节点，同时定义了很多方法来操作这个DOM树。
+
+#### childNodes
+
+childNodes：只读 属性 子节点列表集合
+
+ * 标准下：包含了文本和元素类型的节点，也会包含非法嵌套的子节点。
+ * 非标准下：只包含元素类型的节点，IE7以下不会包含非法嵌套子节点。
+ 
+childNodes只包含一级子节点。 
+ 
+DOM节点的类型有很多种 12种
+
+元素.nodeType：只读 属性 当前元素的节点类型
+
+ * 文本节点：3
+ * 元素节点（标签）：1 
+ * 属性节点：2
+
+childNodes.length
+
+#### children
+
+children：只读 属性 子节点列表集合
+
+ * 标准下：只包含元素类型节点
+ * 非标准下：只包含元素类型节点
+

@@ -1,0 +1,100 @@
+# Site settings
+title: 赵祎鑫
+SEOTitle: 赵祎鑫 | ZhaoYiXin
+header-img: img/home-bg.jpg
+email: 7567437@qq.com
+description: "开拓视野，冲破艰险，看见世界，身临其境，贴近彼此，感受生活，这就是生活的目的。"
+keyword: ""
+url: "http://zhaoyixin.xyz"              # your host, for absolute URL
+baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
+
+
+
+# SNS settings
+RSS: false
+weibo_username:     alhq1314
+zhihu_username:     zhao-yi-xin-81
+github_username:    zhaoyixin
+#twitter_username:  huxpro
+#douban_username:  huxpro
+
+#gem
+gems: [jekyll-paginate]
+
+#jekyll build
+#source:      _source
+destination: _deploy
+
+
+
+# Build settings
+highlighter: rouge
+permalink: pretty
+paginate: 10
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+
+
+
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
+markdown: kramdown
+kramdown:
+  input: GFM                            # use Github Flavored Markdown !important
+
+
+
+# Disqus settings
+#disqus_username: _your_disqus_short_name_
+
+# Duoshuo settings
+#duoshuo_username: 赵祎鑫
+# Share component is depend on Comment so we can NOT use share only.
+#duoshuo_share: false                     # set to false if you want to use Comment without Sharing
+
+
+
+
+# Analytics settings
+# Baidu Analytics
+ba_track_id: 4954d96711a89075e45ad76cebc41374
+# Google Analytics
+#ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
+#ga_domain: huangxuan.me
+
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "开拓视野，冲破艰险，看见世界，身临其境，贴近彼此，感受生活，这就是生活的目的。"
+sidebar-avatar: /img/avatar-zyx.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 0              # A tag will be featured if the size of it is more than this condition value
+
+
+
+# Friends
+friends: [
+    {
+        title: "赵祎鑫",
+        href: "http://zhaoyixin.xyz"
+    },{
+        title: "segmentfault",
+        href: "http://segmentfault.com/"
+    },{
+        title: "div.io",
+        href: "http://div.io/"
+    },{
+        title: "w3cfuns",
+        href: "http://www.w3cfuns.com/"
+    },{
+        title: "github",
+        href: "https://github.com/"
+    }
+]

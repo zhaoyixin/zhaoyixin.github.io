@@ -1,0 +1,184 @@
+---
+layout:     post
+title:      "妙味课堂——javaScript高级面向对象"
+date:       2016-09-20
+author:     "赵祎鑫"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - 笔记
+---
+
+```
+function Aaa(){
+    this.name = name;
+}
+Aaa.prototype.showName = function(){
+    alert(this.name);
+}
+var s1 = new Aaa();
+s1.showName();
+```
+
+尽量不要去修改或者添加系统对象下面的方法和属性
+
+```
+var arr = [1,2,3];
+arr.push(4,5,6);
+alert(arr);      //1,2,3,4,5,6
+```
+
+在JS源码中，系统对象也是基于原型的程序
+
+高级面向对象
+
+包装对象：基本类型都有自己对应的包装对象 ： String    Number    Boolean
+
+- javascript本身就是基于原型的程序
+
+- String   Number   Boolean
+
+```
+var str = 'hello';
+str.charAt(0);      //基本类型会找到对应的包装对象类型，然后包装对象把所有的属性和方法给了基本类型，然后包装对象消失。
+```
+
+原型链
+
+- 实例对象与原型之间的连接，叫做原型链
+
+-  _proto_ (隐式连接)
+
+- Object对象类型是原型链的最外层
+
+```
+function Aaa(){
+    this.name = name;
+}
+<!--Aaa.prototype.num = 10;-->
+Object.prototype.num = 30;
+var s1 = new Aaa();
+s1.num;            //30
+```
+
+面向对象的一些属性和方法
+
+- hasOwnProperty()：看是不是对象自身下面的属性
+
+- constructor：查看对象的构造函数
+> 每个原型都会自动添加constructor属性
+> For in 的时候有些属性是找不到的
+> 避免修改constructor属性
+
+- instanceof：运算符
+> 对象与构造函数在原型链上是否有关系
+
+- toString():object上的方法
+
+```
+var arr = [];
+arr.mun = 10;
+Array.prototype.num2 = 20;
+alert(arr.hasOwnProperty('num'));    //true
+alert(arr.hasOwnProperty('num2'));    //false
+```
+
+```
+function Aaa(){
+
+}
+Aaa.prototype.constructor = Aaa;       //程序会自动添加这句话
+var a1 = new Aaa();
+alert(a1.constructor);    //Aaa
+```
+
+```
+fucntion Aaa(){
+
+}
+var a1 = new Aaa();
+alert(a1 instanceof Aaa);     //true
+alert(a1 instanceof Array);     //false
+```
+
+toSteing：系统对象下面都是自带的，自己写的对象都是通过原型链找Object下面的
+
+```
+var arr = [];
+alert(arr.toString == Object.prototype.toString);   //false
+function Aaa(){
+
+}
+var a1 = new Aaa();
+alert(a1.toString == Object.prototype.toString);    //true
+```
+
+```
+var arr = [1,2,3];
+alert(typeof arr.toString());    //'1,2,3'
+```
+
+利用toString做类型的判断
+
+```
+var arr = [];
+alert(Object.prototype.toString.call(arr));    //'[Object Array]'
+```
+
+对象的继承
+
+什么是继承
+
+- 在原有对象的基础上，略作修改，得到一个新的对象
+- 不影响原有对象的功能
+
+如何添加继承
+
+- 属性：call 调用父类的构造函数
+
+- 方法：for in 拷贝继承
+
+```
+function CreatePerson(name,sex){        //父类
+    this.name = name;
+    this.sex = sex;
+}
+CreatePerson.prototype.showName = function(){
+    alert(this.name);
+}
+var p1 = new CreatePerson('zyx','男');
+p1.showName();
+function CreateStar(name,sex,job){           //子类
+    CreatePerson.call(this,name,sex);
+    this.job = job;
+}
+CreateStar.prototype = CreatePerson.prototype;
+var p2 = new CreateStar('周杰伦','男','演员');
+p2.showName();
+```
+
+对象的复制操作
+
+```
+var a = {
+    name : '小明'
+};
+var b = a;
+b.name = '小强';
+alert(a.name);      //小强
+```
+
+```
+var a = {
+    name : '小明'
+};
+var b = {};
+for(var attr in a){
+    b[attr] = a[attr];
+}
+b.name = '小强';
+alert(a.name);      //小明
+```
+
+
+
+

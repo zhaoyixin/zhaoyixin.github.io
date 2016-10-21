@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript切换div中数字</title>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+            var oInput = document.getElementById('input1');
+
+            oInput.onclick = function () {
+                var arr = oDiv.innerHTML.split(',');
+
+                arr.push(arr[0]);
+                arr.shift();
+
+                oDiv.innerHTML = arr;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">1,2,3,4</div>
+    <input type="button" value="切换" id="input1">
+</body>
+</html>

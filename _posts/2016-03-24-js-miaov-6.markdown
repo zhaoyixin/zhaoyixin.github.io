@@ -1,0 +1,104 @@
+---
+layout:     post
+title:      "javaScript——事件取消"
+date:       2016-03-24
+author:     "赵祎鑫"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - 笔记
+---
+
+#### 事件函数的取消
+
+第一种事件绑定形式的取消
+
+```
+function fn1(){
+    alert(1);
+}
+function fn2(){
+    alert(2);
+}
+document.onclick = fn1;
+document.onclick = null;   //取消
+```
+
+```
+IE：obj.detachEvent(事件名称,事件函数);
+标准：obj.removeEventListener(事件名称,事件函数,是否捕获);
+document.addEventListener('click',fn1,false);
+document.removeEventListener('click',fn1,false);
+```
+
+#### 键盘事件
+
+onkeydown：当键盘按键按下的时候触发
+
+onkeyup：当键盘按键抬起的时候触发
+
+event.keyCode：数字类型 键盘按键的键值
+
+ctrlKey,shiftKey,altKey 布尔值  当一个事件发生的时候，如果ctrl||shift||alt是按下的状态，返回true,否则返回false
+
+```
+document.onkeydown = function(){
+    alert(1);
+}
+
+window.onload = function(){
+    var oDiv = document.getElementById('div1');
+    //不是所有元素都能接收键盘事件，能够响应用户输入的元素，能够接收焦点的元素就能接收键盘事件
+    
+    //onkeydown：如果按下不抬起，那么会连续触发
+    //用定时器
+    
+    document.onkeydown = function(){
+        var ev = ev || event;
+        
+        switch(ev.keyCode){
+            case 37:
+            oDiv.style.left = oDiv.offsetLeft - 10 + 'px';
+            break;
+            case 38:
+            oDiv.style.top = oDiv.offsetTop - 10 + 'px';
+            break;
+            case 39:
+            oDiv.style.left = oDiv.offsetLeft + 10 + 'px';
+            break;
+            case 40:
+            oDiv.style.top = oDiv.offsetLeft + 10 + 'px';
+            break;
+        }
+    }
+}
+```
+
+#### 事件默认行为
+
+事件默认行为：当一个事件发生的时候，浏览器自己会默认做的事情
+
+如何阻止？
+
+当前这个行为是什么事件触发的，然后在这个事件的处理函数中使用`return false;`
+
+oncontextmenu：右键菜单事件，当右键菜单（环境菜单）显示出来的时候触发
+
+#### 自定义右键菜单
+
+```
+window.onload = function(){
+    var oDiv = document.getElementById('div1');
+    
+    document.oncontextmenu = function(ev){
+        var ev = ev || event;
+        oDiv.style.display = 'block';
+        oDiv.style.left = ev.clientX + 'px';
+        oDiv.style.top = ev.clientY + 'px';
+        return false;
+    }
+    
+    document.onclick = function(){
+        oDiv.style.display = 'none';
+    }
+}
+```
