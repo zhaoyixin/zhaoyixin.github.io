@@ -208,3 +208,7 @@ tags:
 
 [DEMO](http://zhaoyixin.xyz/zp-js/20160920/index.html)
 
+####  等级星投票效果
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20161101/index.html)
+
