@@ -154,6 +154,185 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2016/03/30/js-miaov-7/">
+        <h2 class="post-title">
+            CSS3相关
+        </h2>
+        
+        <div class="post-content-preview">
+            CSS3相关
+
+transition 过渡
+
+```
+//过渡
+transition:1s width ease
+
+//浏览器内核前缀
+-webkit- -moz- -o- -ms-
+```
+
+rbga 颜色值 rgba 红+绿+蓝+alpha
+
+
+rgba(0,0,0,0.5)
+
+
+linear-gradient 线性渐变
+
+
+linear-gradient(top,red 0%,blue...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on March 30, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/03/24/js-miaov-6/">
+        <h2 class="post-title">
+            javaScript——事件取消
+        </h2>
+        
+        <div class="post-content-preview">
+            事件函数的取消
+
+第一种事件绑定形式的取消
+
+
+function fn1(){
+    alert(1);
+}
+function fn2(){
+    alert(2);
+}
+document.onclick = fn1;
+document.onclick = null;   //取消
+
+
+
+IE：obj.detachEvent(事件名称,事件函数);
+标准：obj.removeEventL...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on March 24, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/03/23/js-miaov-5/">
+        <h2 class="post-title">
+            javaScript——事件
+        </h2>
+        
+        <div class="post-content-preview">
+            焦点事件
+
+焦点：使浏览器能够区分用户输入的对象，当一个元素有焦点的时候，那么它就可以接收用户的输入操作。
+
+
+  1、点击
+  2、tab
+  3、javascript
+
+
+不是所有的元素都能够接收焦点，能够响应用户操作的元素才能接收焦点。
+
+```
+window.onload = function(){
+    var oText = document.getElementById(‘t...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on March 23, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/03/23/js-miaov-4/">
+        <h2 class="post-title">
+            javaScript——DOM
+        </h2>
+        
+        <div class="post-content-preview">
+            DOM概念
+
+DOM：Document Object Model(文档对象模型)
+
+文档：html页面
+
+文档对象：html页面中的元素
+
+文档对象模型：定义 为了能够让程序(javascript)去操作页面中的元素，而定义出来的一套标准。
+
+DOM会把文档看作一个DOM树状结构，树中的每一个标签 元素就是一个DOM节点，同时定义了很多方法来操作这个DOM树。
+
+childNodes
+
+ch...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on March 23, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/03/23/js-miaov-3/">
+        <h2 class="post-title">
+            javaScript基础笔记——定时器二
+        </h2>
+        
+        <div class="post-content-preview">
+            函数封装
+
+```
+//speed不同、目标点不同、判断条件不同
+// doMove(oDiv,12,800);
+function doMove(obj,dir,target){
+    clearInterval(obj.timer);
+
+obj.timer = setInterval(function(){
+    var speed = parseInt(getStyle(obj,'l...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on March 23, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/03/22/js-miaov-2/">
+        <h2 class="post-title">
+            javaScript基础笔记——定时器一
+        </h2>
+        
+        <div class="post-content-preview">
+            定时器应用
+
+
+//获取元素样式函数
+function getStyle(obj,attr){
+    return obj.currentStyle?obj.currentStyle[attr]:getComputed(obj)[attr];
+}
+
+
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on March 22, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2016/03/21/js-miaov-1/">
         <h2 class="post-title">
             javaScript基础笔记——json
@@ -309,142 +488,6 @@ META相关
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2016/02/24/mob-sp/">
-        <h2 class="post-title">
-            转：移动端高清、多屏适配方案
-        </h2>
-        
-        <div class="post-content-preview">
-            
-  最近在逛前端乱炖时，发现了非常好的一篇文章~讲移动端高清、多屏适配的。我本人在工作中经常做一些web轻应用，需要同时适配PC和移动端。之前的解决方案是PC端定宽600px,移动端采用宽高100%，不同手机的屏幕适配采用CSS媒体查询的方式。这篇文章从Retina屏与普通屏、以及多屏的适配上面进行了详细的讲解，收获颇丰，特分享出来，供大家参考~
-
-
-
-  特别感谢Lovesueee的分享...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 赵祎鑫 on February 24, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/02/24/krpano/">
-        <h2 class="post-title">
-            krpano自学
-        </h2>
-        
-        <div class="post-content-preview">
-            
-  这两天在工作中，需要学习新的软件krpano。
-
-
-The krpano Viewer is a small and very flexible high-performance viewer for all kind of panoramic images and interactive virtual tours. The viewer is available as Flash ...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 赵祎鑫 on February 24, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/02/22/workZJ/">
-        <h2 class="post-title">
-            jQuery全屏滚动插件fullPage.js使用总结
-        </h2>
-        
-        <div class="post-content-preview">
-            
-  今天在使用jQuery插件fullPage.js时遇到了一个坑~特来总结一下，提醒自己以后注意~
-
-
-在fullpage.js这个插件中，有一个方法是setAllowScrolling()，这个方法的作用是添加或删除鼠标滚轮/触控板控制。
-
-setAllowScrolling(boolean, [directions])
-
-Demo Adds or remove the possibi...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 赵祎鑫 on February 22, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/02/18/http-hc/">
-        <h2 class="post-title">
-            转：透过浏览器看HTTP缓存
-        </h2>
-        
-        <div class="post-content-preview">
-            
-  注：本文转自大额_skylar，一个非常可爱的前端妹子`(∩_∩)′，我个人对于浏览器缓存这方面一直比较薄弱，转发学习之~
-
-
-作为前端开发人员，对于我们的站点或应用的缓存机制我们能做的似乎不多，但这些却是与我们关注的性能息息相关的部分，站点没有做任何缓存机制，我们的页面可能会因为资源的下载和渲染变得很慢，但大家都知道去找前端去解决页面慢的问题而不会去找服务端的开发人员。因此，了解相关...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 赵祎鑫 on February 18, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/02/18/for-xhsx/">
-        <h2 class="post-title">
-            转：For循环中分号隔开的3部分的执行顺序探讨
-        </h2>
-        
-        <div class="post-content-preview">
-            
-  for循环是我们编写javascript代码时经常用到的一种循环命令，之前一直对for循环中三个表达式的执行顺序不太明白，今天在网上找到这样一篇文章，觉得讲得很清楚，转过来，供大家借鉴~
-
-
-for循环命令一般为：
-
-```
-for(initialize; test; increment)
-  statement
-
-// 或者
-
-for(initialize; test; increm...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 赵祎鑫 on February 18, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/02/16/beWeb/">
-        <h2 class="post-title">
-            转：如何成为一名卓越的前端工程师
-        </h2>
-        
-        <div class="post-content-preview">
-            
-  译注：本文翻译自谷歌工程师 Philip Walton 的一篇博客。看过之后非常有感触，很多观点都是自己一直坚持想要达到的，分享给大家，希望可以有所帮助。
-
-
-最近我收到一封读者来信让我陷入了思考，信是这么写的：
-
-Hi Philip，您是否介意我问，您是如何成为一名卓越 (great) 的前端工程师的？对此您有什么建议吗？
-不得不承认，被问这样的问题，我很惊讶，因为我从来不觉得自己是...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 赵祎鑫 on February 16, 2016
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -504,7 +547,7 @@ Hi Philip，您是否介意我问，您是如何成为一名卓越 (great) 的�
                             
                         
                             
-                                <a href="/tags/#笔记" title="笔记" rel="20">
+                                <a href="/tags/#笔记" title="笔记" rel="26">
                                     笔记
                                 </a>
                             

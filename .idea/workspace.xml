@@ -2,9 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd719791-3f3e-43ca-807a-a7ab434208e2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2016-11-24-javascriptQWZN.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zp-js/20160301/index1.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/02/hello-2016/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/02/hello-2016/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/14/new-start/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/14/new-start/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/15/gif-control/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/15/gif-control/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/16/beWeb/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/16/beWeb/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/18/for-xhsx/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/18/for-xhsx/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/18/http-hc/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/18/http-hc/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/22/workZJ/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/22/workZJ/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/24/krpano/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/24/krpano/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/24/mob-sp/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/24/mob-sp/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/25/web-hz/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/25/web-hz/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/01/jquery-qs/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/01/jquery-qs/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/01/zp-js/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/01/zp-js/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/21/js-miaov-1/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/21/js-miaov-1/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/22/js-miaov-2/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/22/js-miaov-2/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/23/js-miaov-3/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/23/js-miaov-3/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/23/js-miaov-4/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/23/js-miaov-4/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/23/js-miaov-5/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/23/js-miaov-5/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/24/js-miaov-6/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/24/js-miaov-6/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/30/js-miaov-7/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/30/js-miaov-7/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/04/11/jquery/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/04/11/jquery/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/05/10/gaoCheng3-bianliang/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/05/10/gaoCheng3-bianliang/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/05/10/gaoCheng3-function/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/05/10/gaoCheng3-function/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/05/12/gaoCheng3-chapter5/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/05/12/gaoCheng3-chapter5/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/05/30/gaoCheng3-chapter6/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/05/30/gaoCheng3-chapter6/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/06/01/gaoCheng3-chapter7/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/06/01/gaoCheng3-chapter7/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-DOM/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-DOM/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-dxyy/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-dxyy/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-kspx/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-kspx/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-sjwt/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-sjwt/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-smybds/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-smybds/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/13/miaov-bb/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/13/miaov-bb/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/13/miaov-ky/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/13/miaov-ky/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/18/miaov-msdx1/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/18/miaov-msdx1/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/about/index.html" afterPath="$PROJECT_DIR$/_deploy/about/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/feed.xml" afterPath="$PROJECT_DIR$/_deploy/feed.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/index.html" afterPath="$PROJECT_DIR$/_deploy/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/page2/index.html" afterPath="$PROJECT_DIR$/_deploy/page2/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/page3/index.html" afterPath="$PROJECT_DIR$/_deploy/page3/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/page4/index.html" afterPath="$PROJECT_DIR$/_deploy/page4/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/tags/index.html" afterPath="$PROJECT_DIR$/_deploy/tags/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2016-11-24-javascriptQWZN.markdown" afterPath="$PROJECT_DIR$/_posts/2016-11-24-javascriptQWZN.markdown" />
     </list>
     <ignored path="zhaoyixin.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,8 +83,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/2016-11-24-javascriptQWZN.markdown">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="588">
-                <caret line="124" column="1" selection-start-line="124" selection-start-column="1" selection-end-line="124" selection-end-column="1" />
+              <first_editor relative-caret-position="256">
+                <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -336,16 +375,16 @@
       <workItem from="1477963287220" duration="11910000" />
       <workItem from="1478046989377" duration="4095000" />
       <workItem from="1478135972737" duration="1198000" />
-      <workItem from="1479947190866" duration="11471000" />
+      <workItem from="1479947190866" duration="11761000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242045000" />
+    <option name="totallyTimeSpent" value="242335000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="840" y="0" width="1087" height="1057" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14021422" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -355,7 +394,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="CSS-X-Fire" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19206008" sideWeight="0.49579832" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19176598" sideWeight="0.49579832" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -816,8 +855,8 @@
     <entry file="file://$PROJECT_DIR$/_posts/2016-11-24-javascriptQWZN.markdown">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="588">
-            <caret line="124" column="1" selection-start-line="124" selection-start-column="1" selection-end-line="124" selection-end-column="1" />
+          <first_editor relative-caret-position="256">
+            <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />

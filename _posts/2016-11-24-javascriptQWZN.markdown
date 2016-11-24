@@ -3,7 +3,7 @@ layout:     post
 title:      "《javascript权威指南》读书笔记"
 date:       2016-11-24
 author:     "赵祎鑫"
-header-img: "img/post-bg-http-version.jpg"
+header-img: "img/post-bg-js-version.jpg"
 tags:
     - 笔记
 ---

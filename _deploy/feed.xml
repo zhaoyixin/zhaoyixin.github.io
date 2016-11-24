@@ -5,9 +5,814 @@
     <description>开拓视野，冲破艰险，看见世界，身临其境，贴近彼此，感受生活，这就是生活的目的。</description>
     <link>http://zhaoyixin.xyz/</link>
     <atom:link href="http://zhaoyixin.xyz/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 19 Sep 2016 12:49:10 +0800</pubDate>
-    <lastBuildDate>Mon, 19 Sep 2016 12:49:10 +0800</lastBuildDate>
+    <pubDate>Thu, 24 Nov 2016 15:31:57 +0800</pubDate>
+    <lastBuildDate>Thu, 24 Nov 2016 15:31:57 +0800</lastBuildDate>
     <generator>Jekyll v3.1.1</generator>
+    
+      <item>
+        <title>《javascript权威指南》读书笔记</title>
+        <description>&lt;h4 id=&quot;section&quot;&gt;词法结构&lt;/h4&gt;
+
+&lt;p&gt;区分大小写，HTML并不区分大小写。&lt;/p&gt;
+
+&lt;p&gt;注释：//单行注释
+     /*多行注释
+     */&lt;/p&gt;
+
+&lt;p&gt;{x:1,y:2}    //对象
+[1,2,3,4,5]  //数组&lt;/p&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;值和变量&lt;/h4&gt;
+
+&lt;p&gt;整型直接量： 0,3,100……&lt;/p&gt;
+
+&lt;p&gt;浮点型直接量：3.1,5,5,6,02e23……&lt;/p&gt;
+
+&lt;p&gt;无穷大值，基于它们的加减乘除运算结果还是无穷大值（当然还保留它们的正负号）&lt;/p&gt;
+
+&lt;p&gt;被0整除在javascript中不报错，它只是简单的返回Infinity或-Infinity。&lt;/p&gt;
+
+&lt;p&gt;0除以0是没有意义的，返回NaN。&lt;/p&gt;
+
+&lt;p&gt;无穷大除以无穷大，给任意负数作开方运算或者算术运算符不是数字或无法转换为数字的操作数一起使用时都将返回NaN。&lt;/p&gt;
+
+&lt;p&gt;下面这些值会被转换成false：undefined,null,0,-0,NaN,空字符串&lt;/p&gt;
+
+&lt;p&gt;typeof null   //object&lt;/p&gt;
+
+&lt;p&gt;undefined是预定义的全局变量，不是关键字，它的值就是“未定义”&lt;/p&gt;
+
+&lt;p&gt;typeof undefined   //undefined&lt;/p&gt;
+
+&lt;p&gt;null == undefined   //true&lt;/p&gt;
+
+&lt;p&gt;null === undefined   //false&lt;/p&gt;
+
+&lt;p&gt;null和undefined都是假值，都不包含任何的属性和方法&lt;/p&gt;
+
+&lt;p&gt;undefined“系统级”，出乎意料的或类似错误的值&lt;/p&gt;
+
+&lt;p&gt;null“程序级”，正常的或在意料之中的值，通常赋值给变量或者属性，或者将它们作为参数传入函数&lt;/p&gt;
+
+&lt;p&gt;当javascript解释器启动时，它将创建一个新的全局对象，并给它一组定义的初始属性：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;全局属性，undefined、Infinity、NaN&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;全局函数，isNaN() parseInt() parseFloat() eval()&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;构造函数，Date() RegExp() String() Object() Array()&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;全局对象，Math JSON&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;null == undefined&lt;/p&gt;
+
+&lt;p&gt;‘0’ == 0   //比较之前字符串转换成数字&lt;/p&gt;
+
+&lt;p&gt;0 == false //比较之前布尔值转换成数字&lt;/p&gt;
+
+&lt;p&gt;‘0’ == false  //比较之前字符串和布尔值转换成数字&lt;/p&gt;
+
+&lt;p&gt;所有的对象继承了两个转换方法。一个是toString()，它的作用是返回一个反映这个对象的字符串&lt;/p&gt;
+
+&lt;p&gt;({x;1,y;2}).toString()     //[object object]&lt;/p&gt;
+
+&lt;p&gt;转换对象的函数：toString()  valueOf()&lt;/p&gt;
+
+&lt;p&gt;javascript函数里声明的所有变量（但不涉及赋值）都被“提前”至函数体的顶部&lt;/p&gt;
+
+&lt;p&gt;当声明一个javascript全局变量时，实际上是定义了一个全局对象的一个属性。当使用var声明一个变量时，创建的这个属性是不可配置的，也就是说这个变量是不能通过delete运算符删除。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var a = 1;
+delete a   //false
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;如果没有使用严格模式并给一个未声明的变量赋值的话，javascript会自动创建一个全局变量。以这种方式创建的变量是全局对象的正常的可配置属性，可以删除。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+b = 2;
+delete b;   //true
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;表达式和运算符&lt;/h4&gt;
+
+&lt;p&gt;函数定义表达式：var square = function(x){return x*x;}     //返回传入参数值的平方&lt;/p&gt;
+
+&lt;p&gt;```
+var i=1; j=++i    //i和j的值都是2，对操作符进行增量计算，并返回计算后的值&lt;/p&gt;
+
+&lt;p&gt;var i=1; j=i++    //i是2，j是1，对操作符进行增量计算，并返回未做增量计算的值
+```&lt;/p&gt;
+
+&lt;p&gt;in运算符希望它的左操作数是字符串或可以转换为字符串，希望它的右侧操作数是一个对象。如果右侧的对象拥有一个名为左操作数值的属性名，则表达式返回true&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var point = {x:1,y:2};
+&#39;x&#39; in point;    //true
+&#39;z&#39; in point;    //false
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;instanceof操作符希望左操作数是一个对象，右操作数标识对象的类。如果左侧的对象是右侧类的实例，则表达式返回true，否则返回false。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var d = new Date();
+d instanceof Date;   //true
+d instanceof Object;  //true
+d instanceof Number;  //false
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;如果instanceof的左操作数不是对象，instanceof会返回false，如果右操作数不是函数，则抛出一个类型错误异常。&lt;/p&gt;
+
+&lt;p&gt;typeof是一元运算符，放在单个操作数的前面，操作数可以是任意类型。返回值为表示操作数类型的一个字符串。&lt;/p&gt;
+
+&lt;p&gt;delete是一元操作符，它用来删除对象属性或者数组元素。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;语句&lt;/h4&gt;
+
+</description>
+        <pubDate>Thu, 24 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://zhaoyixin.xyz/2016/11/24/javascriptQWZN/</link>
+        <guid isPermaLink="true">http://zhaoyixin.xyz/2016/11/24/javascriptQWZN/</guid>
+        
+        <category>笔记</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>图解HTTP读书笔记</title>
+        <description>&lt;h4 id=&quot;web&quot;&gt;了解web及网络基础&lt;/h4&gt;
+
+&lt;p&gt;web是建立在HTTP协议上通信的&lt;/p&gt;
+
+&lt;p&gt;现在已经提出了三项web构建技术：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;SGML(Standard Generalized Markup Language,标准通用标记语言)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;HTML(HyperText Markup Language,超文本标记语言)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;URL(Uniform Resource Locator,统一资源定位符)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;TCP/IP是互联网相关的各类协议族的总称&lt;/p&gt;
+
+&lt;p&gt;TCP/IP协议族按层次分别分为：应用层、传输层、网络层和数据链路层&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;应用层：决定了向用户提供应用服务时通信的活动(ftp、DNS、HTTP)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;传输层：对上层应用层提供处于网络连接中的两台计算机之间的数据传输(TCP、UDP)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;网络层：用来处理在网络上流动的数据包。数据包是网络传输的最小数据单位。该层规定了通过怎样的路径（所谓的传输路线）到达对方计算机，并把数据包传送给对方。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;链路层：用来处理连接网络的硬件部分。包括控制操作系统、硬件的设备驱动、NIC（网络适配器，即网卡）以及光纤等物理可见部分。硬件上的范畴均在链路层的作用范围之内。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Fri, 21 Oct 2016 00:00:00 +0800</pubDate>
+        <link>http://zhaoyixin.xyz/2016/10/21/tujieHTTP/</link>
+        <guid isPermaLink="true">http://zhaoyixin.xyz/2016/10/21/tujieHTTP/</guid>
+        
+        <category>笔记</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>javascript设计模式与开发实践读书笔记</title>
+        <description>&lt;h4 id=&quot;this&quot;&gt;this&lt;/h4&gt;
+
+&lt;h5 id=&quot;this-1&quot;&gt;this的指向&lt;/h5&gt;
+
+&lt;p&gt;出去不常用的with和eval的情况，具体到实际应用中，this的指向大致可以分为以下4种。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;作为对象的方法调用&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;作为普通函数调用。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;构造器调用。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Function.prototype.call或Function.prototype.apply调用。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;1、作为对象的方法调用&lt;/p&gt;
+
+&lt;p&gt;当函数作为对象的方法被调用时，this指向该对象：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var obj = {
+    a:1,
+    getA:function(){
+        alert(this===obj);        //输出true
+        alert(this.a);            //输出1
+    }
+};
+obj.getA();
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;2、作为普通函数调用&lt;/p&gt;
+
+&lt;p&gt;当函数不作为对象的属性被调用时，也就是我们常说的普通函数方式，此时的this总是指向全局对象。在浏览器的javascript里，这个全局对象就是window对象。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+window.name = &#39;globalName&#39;;
+var getName = function(){
+    return this.name;
+};
+console.log(getName());         //输出globalName
+或者：
+window.name = &#39;globalName&#39;;
+var myObject = {
+    name:&#39;sven&#39;,
+    getName:function(){
+        return this.name;
+    }
+};
+var getName = myObject.getName;
+console.log(getName());          //globalName
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;有时候我们会遇到一些困扰， 比如在 div 节点的事件函数内部， 有一个局部的 callback 方法，callback 被作为普通函数调用时， callback 内部的 this 指向了 window ，但我们往往是想让它指向该 div 节点，见如下代码：&lt;/p&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+&lt;html&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;div1&quot;&gt;我是一个 div&lt;/div&gt;
+    &lt;/body&gt;
+    &lt;script&gt;
+        window.id = &#39;window&#39;;
+        document.getElementById( &#39;div1&#39; ).onclick = function(){
+            alert ( this.id ); // 输出：&#39;div1&#39;
+            var callback = function(){
+                alert ( this.id ); // 输出：&#39;window&#39;
+            }
+            callback();
+        };
+    &lt;/script&gt;
+&lt;/html&gt;
+&lt;p&gt;```&lt;/p&gt;
+
+&lt;p&gt;此时有一种简单的解决方案，可以用一个变量保存 div 节点的引用：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+document.getElementById( &#39;div1&#39; ).onclick = function(){
+    var that = this; // 保存 div 的引用
+    var callback = function(){
+        alert ( that.id ); // 输出：&#39;div1&#39;
+    }
+    callback();
+};
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;3、构造器调用&lt;/p&gt;
+
+&lt;p&gt;javascript中没有类，但是可以从构造器中创建对象，同时也提供了new运算符，使得构造器看起来更像一个类。&lt;/p&gt;
+
+&lt;p&gt;除了宿主提供的一些内置函数，大部分javascript函数都可以当作构造器使用。构造器的外表跟普通函数一模一样，它们的区别在于被调用的方式。当用new运算符调用函数时，该函数总会返回一个对象，通常情况下，构造器里this就指向返回的这个对象，见如下代码：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var MyClass = function(){
+    this.name = &#39;sven&#39;;
+};
+var obj = new MyClass();
+alert ( obj.name ); // 输出：sven
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;但用 new 调用构造器时，还要注意一个问题，如果构造器显式地返回了一个 object 类型的对象，那么此次运算结果最终会返回这个对象，而不是我们之前期待的 this ：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var MyClass = function(){
+    this.name = &#39;sven&#39;;
+    return{    //显式地返回一个对象
+        name:&#39;anne&#39;
+    }
+};
+var obj = new MyClass();
+alert(obj.name);     //输出anne
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;如果构造器不显式地返回任何数据，或者是返回一个非对象类型的数据，就不会造成上述问题：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var MyClass = function(){
+    this.name = &#39;sven&#39;;
+    return &#39;anne&#39;;     //返回string类型
+};
+var obj = new MyClass();
+alert(oj.name);     //sven
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;4、Function.prototype.call或Function.prototype.apply调用&lt;/p&gt;
+
+&lt;p&gt;跟普通的函数调用相比， 用 Function.prototype.call 或 Function.prototype.apply可以动态地改变传入函数的 this ：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var obj1 = {
+    name:&#39;sven&#39;,
+    getName:function(){
+        return this.name;
+    }
+};
+var obj2 = {
+    name:&#39;anne&#39;
+};
+console.log(obj1.getName());   //sven
+console.log(obj1.getName.call(obj2));  //anne
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;this-2&quot;&gt;丢失的this&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var obj = {
+    myName : &#39;sven&#39;,
+    getName : function(){
+        return this.myName;
+    }
+};
+console.log(obj.getName());    //sven
+var getName2 = obj.getName;
+console.log(getName2());       //undefined
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;当用另外一个变量 getName2 来引用 obj.getName ，并且调用 getName2 时，根据 2.1.2节提到的规律，此时是普通函数调用方式， this 是指向全局 window 的，所以程序的执行结果是 undefined 。&lt;/p&gt;
+
+&lt;h4 id=&quot;callapply&quot;&gt;call和apply&lt;/h4&gt;
+
+&lt;p&gt;ECAMScript 3给 Function 的原型定义了两个方法， 它们是 Function.prototype.call 和 Function.prototype.apply 。&lt;/p&gt;
+
+&lt;p&gt;apply 接受两个参数，第一个参数指定了函数体内 this 对象的指向，第二个参数为一个带下标的集合，这个集合可以为数组，也可以为类数组， apply 方法把这个集合中的元素作为参数传递给被调用的函数：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var func = function(a,b,c){
+    alert([a,b,c]);    //[1,2,3]
+};
+func.apply(null,[1,2,3]);
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;call 传入的参数数量不固定， 跟 apply 相同的是， 第一个参数也是代表函数体内的 this 指向，从第二个参数开始往后，每个参数被依次传入函数：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var func = function(a,b,c){
+    alert([a,b,c]);    //[1,2,3]
+};
+func.call(null,1,2,3);
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;callapply-1&quot;&gt;call和apply的用途&lt;/h5&gt;
+
+&lt;p&gt;1、改变this指向&lt;/p&gt;
+
+&lt;p&gt;call和apply最常见的用途是改变函数内部的this指向：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var obj1 = {
+    name:&#39;sven&#39;
+};
+var obj2 = {
+    name:&#39;anne&#39;
+};
+window.name = &#39;window&#39;;
+var getName = function(){
+    alert(this.name);
+};
+getName();    //window
+getName.call(obj1);  //sven
+getName.call(obj2);  //anne
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;2、Function.prototype.bind&lt;/p&gt;
+
+&lt;p&gt;大部分高级浏览器都实现了内置的Function.prototype.bind，用来指定函数内部的this指向，即使没有原生的Function.prototype.bind实现，我们来模拟一个也不是难事：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+Function.prototype.bind = function(context){
+    var self = this;     //保存原函数
+    return function(){   //返回一个新的函数
+        return self.apply(context,arguments);  //执行新的函数的时候，会把之前传入的context当作新函数体内的this
+    }
+};
+var obj = {
+    name : &#39;sven&#39;
+};
+var func = function(){
+    alert(this.name);   //sven
+}.bind(obj);
+func();
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;3、借用其他对象的方法&lt;/p&gt;
+
+&lt;p&gt;借用方法的第一种场景是“借用构造函数”，通过这种技术，可以实现一些类似继承的效果：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var A = function(name){
+    this.name = name;
+};
+var B = function(){
+    A.apply(this,arguments);
+};
+B.prototype.getName = function(){
+    return this.name;
+};
+var b = new B(&#39;sven&#39;);
+console.log(b.getName());   //sven
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section&quot;&gt;闭包&lt;/h4&gt;
+
+&lt;h5 id=&quot;section-1&quot;&gt;变量的作用域&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var func = function(){
+    var a = 1;
+    alert(a);   //1
+};
+func();
+alert(a);    //Uncaught ReferenceError: a is not defined
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;变量的生存周期&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var func = function(){
+    var a = 1;     //退出函数后局部变量a将被销毁
+    alert(a);
+};
+func();
+现在我们来看看下面这段代码：
+var func = function(){
+    var a = 1;
+    return function(){
+        a++;
+        alert(a);
+    }
+};
+var f = func():
+f();    //2
+f();    //3
+f();    //4
+f();    //5
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;当退出函数后，局部变量 a 并没有消失，而是似乎一直在某个地方存活着。这是因为当执行 var f = func(); 时， f 返回了一个匿名函数的引用，它可以访问到 func()被调用时产生的环境，而局部变量 a 一直处在这个环境里。既然局部变量所在的环境还能被外界访问，这个局部变量就有了不被销毁的理由。在这里产生了一个闭包结构，局部变量的生命看起来被延续了。&lt;/p&gt;
+
+&lt;p&gt;解决方法是在闭包的帮助下，把每次循环的 i 值都封闭起来。当在事件函数中顺着作用域链中从内到外查找变量 i 时，会先找到被封闭在闭包环境中的 i ，如果有 5个 div ，这里的 i 就分别是 0,1,2,3,4：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+for(var i=0;i&amp;lt;nodes.length;i++){
+    (function(i){
+        nodes[i].onclick = function(){
+            console.log(i);
+        }
+    })(i)
+};
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;section-3&quot;&gt;闭包的更多作用&lt;/h5&gt;
+
+&lt;p&gt;1、封装变量&lt;/p&gt;
+
+&lt;p&gt;闭包可以帮助把一些不需要暴露在全局的变量封装成“私有变量”。假设有一个计算乘积的简单函数：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var mult = function(){
+    var a = 1;
+    for(var i=0;l&amp;lt;arguments.length;i&amp;lt;l;i++){
+        a = a*arguments[i];
+    }
+    return a;
+};
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;2、延续局部变量的寿命&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var report = (function(){
+    var imgs = [];
+    return function(src){
+        var img = new Image();
+        img.push(img);
+        img.src = src;
+    }
+})();
+&lt;/code&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 29 Sep 2016 00:00:00 +0800</pubDate>
+        <link>http://zhaoyixin.xyz/2016/09/29/jsSjmsKfsjDsbj/</link>
+        <guid isPermaLink="true">http://zhaoyixin.xyz/2016/09/29/jsSjmsKfsjDsbj/</guid>
+        
+        <category>笔记</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>妙味课堂——javaScript模块化</title>
+        <description>
+</description>
+        <pubDate>Tue, 20 Sep 2016 00:00:00 +0800</pubDate>
+        <link>http://zhaoyixin.xyz/2016/09/20/miaov-jsmkh/</link>
+        <guid isPermaLink="true">http://zhaoyixin.xyz/2016/09/20/miaov-jsmkh/</guid>
+        
+        <category>笔记</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>妙味课堂——javaScript继承的其他形式</title>
+        <description>&lt;p&gt;继承的其他形式&lt;/p&gt;
+
+&lt;p&gt;类式继承&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;利用构造函数（类）继承的方式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;类：javascript是没有类的概念的，但是可以把构造函数看作是类&lt;/p&gt;
+
+&lt;p&gt;要做属性和方法继承的时候，要分开继承&lt;/p&gt;
+
+&lt;p&gt;```
+function Aaa(){            //父类
+    this.name = [1,2,3];
+}
+Aaa.prototype.showName = function(){
+    alert(this.name);
+};
+function Bbb(){             //子类
+    Aaa.call(this);
+}&lt;/p&gt;
+
+&lt;p&gt;var F = function(){};
+F.prototype = Aaa.prototype;
+Bbb.prototype = new F();      //类式继承
+Bbb.prototype.constructor = Bbb;    //修正指向问题&lt;/p&gt;
+
+&lt;p&gt;var b1 = new Bbb();
+b1.showName();
+```&lt;/p&gt;
+
+&lt;p&gt;原型继承&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;借助原型来实现对象继承对象&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var a = {
+    name : &#39;zyx&#39;
+};
+var b = cloneObj(a);
+alert(b.name);           //zyx
+function cloneObj(obj){
+    var F = function(){};
+    F.prototype = obj;
+    return new F();
+}
+&lt;/code&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 20 Sep 2016 00:00:00 +0800</pubDate>
+        <link>http://zhaoyixin.xyz/2016/09/20/miaov-msdx3/</link>
+        <guid isPermaLink="true">http://zhaoyixin.xyz/2016/09/20/miaov-msdx3/</guid>
+        
+        <category>笔记</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>妙味课堂——javaScript高级面向对象</title>
+        <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+function Aaa(){
+    this.name = name;
+}
+Aaa.prototype.showName = function(){
+    alert(this.name);
+}
+var s1 = new Aaa();
+s1.showName();
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;尽量不要去修改或者添加系统对象下面的方法和属性&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var arr = [1,2,3];
+arr.push(4,5,6);
+alert(arr);      //1,2,3,4,5,6
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;在JS源码中，系统对象也是基于原型的程序&lt;/p&gt;
+
+&lt;p&gt;高级面向对象&lt;/p&gt;
+
+&lt;p&gt;包装对象：基本类型都有自己对应的包装对象 ： String    Number    Boolean&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;javascript本身就是基于原型的程序&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;String   Number   Boolean&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var str = &#39;hello&#39;;
+str.charAt(0);      //基本类型会找到对应的包装对象类型，然后包装对象把所有的属性和方法给了基本类型，然后包装对象消失。
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;原型链&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;实例对象与原型之间的连接，叫做原型链&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;proto&lt;/em&gt; (隐式连接)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Object对象类型是原型链的最外层&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+function Aaa(){
+    this.name = name;
+}
+&amp;lt;!--Aaa.prototype.num = 10;--&amp;gt;
+Object.prototype.num = 30;
+var s1 = new Aaa();
+s1.num;            //30
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;面向对象的一些属性和方法&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;hasOwnProperty()：看是不是对象自身下面的属性&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;constructor：查看对象的构造函数
+&amp;gt; 每个原型都会自动添加constructor属性
+&amp;gt; For in 的时候有些属性是找不到的
+&amp;gt; 避免修改constructor属性&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;instanceof：运算符
+&amp;gt; 对象与构造函数在原型链上是否有关系&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;toString():object上的方法&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var arr = [];
+arr.mun = 10;
+Array.prototype.num2 = 20;
+alert(arr.hasOwnProperty(&#39;num&#39;));    //true
+alert(arr.hasOwnProperty(&#39;num2&#39;));    //false
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;```
+function Aaa(){&lt;/p&gt;
+
+&lt;p&gt;}
+Aaa.prototype.constructor = Aaa;       //程序会自动添加这句话
+var a1 = new Aaa();
+alert(a1.constructor);    //Aaa
+```&lt;/p&gt;
+
+&lt;p&gt;```
+fucntion Aaa(){&lt;/p&gt;
+
+&lt;p&gt;}
+var a1 = new Aaa();
+alert(a1 instanceof Aaa);     //true
+alert(a1 instanceof Array);     //false
+```&lt;/p&gt;
+
+&lt;p&gt;toSteing：系统对象下面都是自带的，自己写的对象都是通过原型链找Object下面的&lt;/p&gt;
+
+&lt;p&gt;```
+var arr = [];
+alert(arr.toString == Object.prototype.toString);   //false
+function Aaa(){&lt;/p&gt;
+
+&lt;p&gt;}
+var a1 = new Aaa();
+alert(a1.toString == Object.prototype.toString);    //true
+```&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var arr = [1,2,3];
+alert(typeof arr.toString());    //&#39;1,2,3&#39;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;利用toString做类型的判断&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var arr = [];
+alert(Object.prototype.toString.call(arr));    //&#39;[Object Array]&#39;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;对象的继承&lt;/p&gt;
+
+&lt;p&gt;什么是继承&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在原有对象的基础上，略作修改，得到一个新的对象&lt;/li&gt;
+  &lt;li&gt;不影响原有对象的功能&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如何添加继承&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;属性：call 调用父类的构造函数&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;方法：for in 拷贝继承&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+function CreatePerson(name,sex){        //父类
+    this.name = name;
+    this.sex = sex;
+}
+CreatePerson.prototype.showName = function(){
+    alert(this.name);
+}
+var p1 = new CreatePerson(&#39;zyx&#39;,&#39;男&#39;);
+p1.showName();
+function CreateStar(name,sex,job){           //子类
+    CreatePerson.call(this,name,sex);
+    this.job = job;
+}
+CreateStar.prototype = CreatePerson.prototype;
+var p2 = new CreateStar(&#39;周杰伦&#39;,&#39;男&#39;,&#39;演员&#39;);
+p2.showName();
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;对象的复制操作&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var a = {
+    name : &#39;小明&#39;
+};
+var b = a;
+b.name = &#39;小强&#39;;
+alert(a.name);      //小强
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+var a = {
+    name : &#39;小明&#39;
+};
+var b = {};
+for(var attr in a){
+    b[attr] = a[attr];
+}
+b.name = &#39;小强&#39;;
+alert(a.name);      //小明
+&lt;/code&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 20 Sep 2016 00:00:00 +0800</pubDate>
+        <link>http://zhaoyixin.xyz/2016/09/20/miaov-msdx2/</link>
+        <guid isPermaLink="true">http://zhaoyixin.xyz/2016/09/20/miaov-msdx2/</guid>
+        
+        <category>笔记</category>
+        
+        
+      </item>
     
       <item>
         <title>妙味课堂——javaScript面向对象</title>
@@ -500,1044 +1305,6 @@ function aaa(){}   //函数声明&lt;/p&gt;
         <pubDate>Mon, 12 Sep 2016 00:00:00 +0800</pubDate>
         <link>http://zhaoyixin.xyz/2016/09/12/miaov-smybds/</link>
         <guid isPermaLink="true">http://zhaoyixin.xyz/2016/09/12/miaov-smybds/</guid>
-        
-        <category>笔记</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>妙味课堂——事件委托</title>
-        <description>&lt;p&gt;event对象：事件源 不管在哪个事件中，只要你操作的那个元素就是事件源。&lt;/p&gt;
-
-&lt;p&gt;ie： window.event.srcElement 
-标准：event.target&lt;/p&gt;
-
-&lt;p&gt;nodeName：找到当前元素的标签名&lt;/p&gt;
-
-&lt;p&gt;事件委托：利用事件冒泡的原理，把事件加到父级上，触发执行效果&lt;/p&gt;
-
-&lt;p&gt;好处：&lt;/p&gt;
-
-&lt;p&gt;1、提高性能&lt;/p&gt;
-
-&lt;p&gt;2、新添加的元素，还有之前的事件&lt;/p&gt;
-
-&lt;p&gt;```
-for (var i=0;i&amp;lt;aLi.length;i++){
-    aLi[i].onclick = function(){
-        alert(‘123’);
-    }
-}&lt;/p&gt;
-
-&lt;p&gt;oUl.onclick = function () {
-    alert(‘123’);
-}
-```&lt;/p&gt;
-
-&lt;p&gt;```
-oUl.onmouseover = function(ev){
-    var ev = ev || window.event;
-    var target = ev.target || ev.srcElement;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if(target.nodeName.toLowerCase() == &#39;li&#39;){
-    target.style.background = &#39;red&#39;;
-} }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;oUl.onmouseout = function(ev){
-    var ev = ev || window.event;
-    var target = ev.target || ev.srcElement;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if(target.nodeName.toLowerCase() == &#39;li&#39;){
-    target.style.background = &#39;&#39;;
-} } ```
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Mon, 12 Sep 2016 00:00:00 +0800</pubDate>
-        <link>http://zhaoyixin.xyz/2016/09/12/miaov-sjwt/</link>
-        <guid isPermaLink="true">http://zhaoyixin.xyz/2016/09/12/miaov-sjwt/</guid>
-        
-        <category>笔记</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>妙味课堂——快速排序</title>
-        <description>&lt;p&gt;快速排序&lt;/p&gt;
-
-&lt;p&gt;1、找一个基准点&lt;/p&gt;
-
-&lt;p&gt;2、建立两个数组，分别存储左边和右边的数&lt;/p&gt;
-
-&lt;p&gt;3、利用递归进行下次比较&lt;/p&gt;
-
-&lt;p&gt;```
-function quickSort(){
-    if(arr.length == 1){
-        return arr;
-    }&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var num = Math.floor(arr.length/2);
-
-var numValue = arr.splice(num,1);
-
-var left = [];
-var right = [];
-
-for(var i=0;i&amp;lt;arr.length;i++){
-    if(arr[i]&amp;lt;numValue){
-        left.push(arr[i]);
-    }else{
-        right.push(arr[i]);
-    }
-}
-
-return quickSort(left).concat([numValue],quickSort(right)); }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;quickSort([12,5,37,6,22,40]);
-```&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 12 Sep 2016 00:00:00 +0800</pubDate>
-        <link>http://zhaoyixin.xyz/2016/09/12/miaov-kspx/</link>
-        <guid isPermaLink="true">http://zhaoyixin.xyz/2016/09/12/miaov-kspx/</guid>
-        
-        <category>笔记</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>妙味课堂——对象引用</title>
-        <description>&lt;p&gt;```
-var a = 5;
-var b = a;&lt;/p&gt;
-
-&lt;p&gt;b += 3;&lt;/p&gt;
-
-&lt;p&gt;alert(b);    //8
-alert(a);    //5
-```&lt;/p&gt;
-
-&lt;p&gt;```
-var a = [1,2,3];
-var b = a;&lt;/p&gt;
-
-&lt;p&gt;b.push(4);&lt;/p&gt;
-
-&lt;p&gt;alert(b);   //1,2,3,4
-alert(a);   //1,2,3,4
-```&lt;/p&gt;
-
-&lt;p&gt;对象和函数都是引用的关系&lt;/p&gt;
-
-&lt;p&gt;```
-var a = [1,2,3];
-var b = a;
-b = [1,2,3,4];&lt;/p&gt;
-
-&lt;p&gt;alert(b);   //1,2,3,4
-alert(a);   //1,2,3
-```&lt;/p&gt;
-
-&lt;p&gt;```
-var obj = {
-    a : 10
-}&lt;/p&gt;
-
-&lt;p&gt;var obj2 = obj;&lt;/p&gt;
-
-&lt;p&gt;obj2.a = 20;&lt;/p&gt;
-
-&lt;p&gt;alert(obj.a);    //20
-```&lt;/p&gt;
-
-&lt;p&gt;```
-var obj = {   &lt;br /&gt;
-    a:10
-}&lt;/p&gt;
-
-&lt;p&gt;function copy(obj){   //浅拷贝
-    var newObj = {};&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for(var attr in obj){
-    newObj[attr] = obj[attr];
-}
-
-return newObj; }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;function deepCopy(obj){   //深拷贝
-    if(typeof obj !== ‘object’){
-        return obj;
-    }&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var newObj = {};
-    
-for(var attr in obj){
-    newObj[attr] = obj[attr];
-}
-
-return newObj; }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;var obj2 = copy(obj);&lt;/p&gt;
-
-&lt;p&gt;obj2.a = 20;&lt;/p&gt;
-
-&lt;p&gt;alert(obj.a);   //10
-```&lt;/p&gt;
-
-&lt;p&gt;递归&lt;/p&gt;
-
-&lt;p&gt;1、函数调用函数自身，执行递的动作&lt;/p&gt;
-
-&lt;p&gt;2、最后一次判断一个终止条件，可以执行归的工作&lt;/p&gt;
-
-&lt;p&gt;```
-function text(n){&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if(n == 1)(
-    return 1;
-)
-
-return n*text(n-1); }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;alert(text(4));
-```&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 12 Sep 2016 00:00:00 +0800</pubDate>
-        <link>http://zhaoyixin.xyz/2016/09/12/miaov-dxyy/</link>
-        <guid isPermaLink="true">http://zhaoyixin.xyz/2016/09/12/miaov-dxyy/</guid>
-        
-        <category>笔记</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>妙味课堂——DOM</title>
-        <description>&lt;p&gt;DOM:Document Object Model 文档对象模型&lt;/p&gt;
-
-&lt;p&gt;文档：HTML页面&lt;/p&gt;
-
-&lt;p&gt;文档对象：页面中元素&lt;/p&gt;
-
-&lt;p&gt;文档对象模型：定义 为了能够让程序（JS）去操作页面中的元素&lt;/p&gt;
-
-&lt;p&gt;DOM会把文档看作是一棵树，同时定义了很多方法来操作这棵树中的每一个元素（节点）&lt;/p&gt;
-
-&lt;h4 id=&quot;childnodes&quot;&gt;childNodes&lt;/h4&gt;
-
-&lt;p&gt;只读属性 子节点列表集合&lt;/p&gt;
-
-&lt;p&gt;DOM节点的类型有很多种 12种 元素节点 文本节点&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-oUl.childNodes.length;
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;attributes&quot;&gt;attributes&lt;/h4&gt;
-
-&lt;p&gt;属性 属性列表集合&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-oUl.attributes.length;
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section&quot;&gt;可视区的尺寸&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-document.documentElement.clientWidth
-document.documentElement.clientHeight
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section-1&quot;&gt;滚动距离&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section-2&quot;&gt;内容高度&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-oDiv.scrollWidth;
-oDiv.scrollHeight;
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section-3&quot;&gt;文档高度&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-document.documentElement.offsetWidth;
-document.documentElement.offsetHeight;
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section-4&quot;&gt;两个事件&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-onscroll : 当滚动条滚动的时候触发
-onresize : 当窗口大小发生改变时触发
-&lt;/code&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 12 Sep 2016 00:00:00 +0800</pubDate>
-        <link>http://zhaoyixin.xyz/2016/09/12/miaov-DOM/</link>
-        <guid isPermaLink="true">http://zhaoyixin.xyz/2016/09/12/miaov-DOM/</guid>
-        
-        <category>笔记</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>javaScript高级程序设计（第三版）读书笔记——函数表达式</title>
-        <description>&lt;p&gt;函数表达式是javascript中的一个既强大又容易令人困惑的特性。定义函数的方式有两种：一种是函数声明，另一种就是函数表达式。&lt;/p&gt;
-
-&lt;p&gt;函数声明的语法是这样的：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-function functionName(arg0,arg1,arg2){
-    //函数体
-}
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;首先是function关键字，然后是函数的名字，这就是指定函数名的方式。浏览器给函数定义了一个非标准的name属性，通过这个属性可以访问到给函数指定的名字。这个属性的值永远等于跟在function关键字后面的标识符。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-//只在 Firefox、Safari、Chrome 和 Opera 有效
-alert(functionName.name); //&quot;functionName&quot;
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;关于函数声明，它的一个重要特征就是函数声明提升，意思是在执行代码之前会先读取函数声明。这就意味着可以把函数声明放在调用它的语句后面。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-sayHi();
-function sayHi(){
-    alert(&quot;Hi!&quot;);
-}
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;这个例子不会抛出错误，因为在代码执行之前会先读取函数声明。&lt;/p&gt;
-
-&lt;p&gt;第二种创建函数的方式是使用函数表达式。函数表达式有几种不同的语法形式。下面是最常见的一种形式：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-var functionName = function(arg0, arg1, arg2){
-    //函数体
-};
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;这种形式看起来好像是常规的变量赋值语句，即创建一个函数并将它赋值给变量。这种情况下创建的函数叫做匿名函数，因为function关键字后面没有标识符。匿名函数的name属性是空字符串。&lt;/p&gt;
-
-&lt;p&gt;函数表达式与其他表达式一样，在使用前必须先赋值。以下代码会导致错误：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-sayHi(); //错误：函数还不存在
-var sayHi = function(){
-    alert(&quot;Hi!&quot;);
-};
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;理解函数提升的关键，就是理解函数声明与函数表达式之间的区别。&lt;/p&gt;
-
-&lt;h4 id=&quot;section&quot;&gt;递归&lt;/h4&gt;
-
-&lt;p&gt;递归函数是在一个函数通过名字调用自身的情况下构成的，如下所示：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-function factorial(num){
-    if (num &amp;lt;= 1){
-        return 1;
-    } else {
-        return num * factorial(num-1);
-    }
-}
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;这是一个经典的递归阶乘函数。虽然这个函数表面看来没什么问题，但下面的代码却可能导致它出错。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-var anotherFactorial = factorial;
-factorial = null;
-alert(anotherFactorial(4)); //出错！
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;以上代码先把 factorial() 函数保存在变量 anotherFactorial 中，然后将 factorial 变量设置为 null ，结果指向原始函数的引用只剩下一个。但在接下来调用 anotherFactorial() 时，由于必须执行 factorial() ， 而 factorial 已经不再是函数， 所以就会导致错误。 在这种情况下， 使用 arguments.callee 可以解决这个问题。&lt;/p&gt;
-
-&lt;p&gt;我们知道， arguments.callee 是一个指向正在执行的函数的指针，因此可以用它来实现对函数的递归调用&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-function factorial(num){
-    if (num &amp;lt;= 1){
-        return 1;
-    } else {
-        return num * arguments.callee(num-1);
-    }
-}
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;加粗的代码显示，通过使用 arguments.callee 代替函数名，可以确保无论怎样调用函数都不会出问题。因此，在编写递归函数时，使用 arguments.callee 总比使用函数名更保险。&lt;/p&gt;
-
-&lt;p&gt;但在严格模式下，不能通过脚本访问 arguments.callee ，访问这个属性会导致错误。不过，可以使用命名函数表达式来达成相同的结果。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-var factorial = (function f(num){
-    if (num &amp;lt;= 1){
-        return 1;
-    } else {
-        return num * f(num-1);
-    }
-});
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;以上代码创建了一个名为 f() 的命名函数表达式，然后将它赋值给变量 factorial 。即便把函数赋值给了另一个变量，函数的名字 f 仍然有效，所以递归调用照样能正确完成。这种方式在严格模式和非严格模式下都行得通。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-1&quot;&gt;闭包&lt;/h4&gt;
-
-&lt;p&gt;有不少开发人员总是搞不清匿名函数和闭包这两个概念，因此经常混用。闭包是指有权访问另一个函数作用域中的变量的函数。创建闭包的常见方式，就是在一个函数内部创建另一个函数：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-function createComparisonFunction(propertyName) {
-    return function(object1, object2){
-        var value1 = object1[propertyName];
-        var value2 = object2[propertyName];
-        if (value1 &amp;lt; value2){
-            return -1;
-        } else if (value1 &amp;gt; value2){
-            return 1;
-        } else {
-            return 0;
-        }
-    };
-}
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;在这个例子中，突出的那两行代码是内部函数（一个匿名函数）中的代码，这两行代码访问了外部函数中的变量propertyName。即使这个内部函数被返回了，而且是在其他地方被调用了，但它仍然可以访问变量propertyName。之所以还能够访问这个变量，是因为内部函数的作用域链中包含createComparisonFunction() 的作用域。要彻底搞清楚其中的细节，必须从理解函数被调用的时候都会发生什么入手。&lt;/p&gt;
-
-&lt;p&gt;有关如何创建作用域链及作用域链有什么作用的细节，对彻底理解闭包至关重要。当某个函数被调用时，会创建一个执行环境及相应的作用域链。然后，使用arguments和其他命名参数的值来初始化函数的活动对象。但在作用域链中，外部函数的活动对象始终处于第二位，外部函数的外部函数的活动对象处于第三位，……直至作为作用域链重点的全局执行环境。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-2&quot;&gt;闭包与变量&lt;/h5&gt;
-
-&lt;p&gt;作用域链的这种配置机制引出了一个值得注意的副作用，即闭包只能取得包含函数中任何变量的最后一个值。闭包所保存的是整个变量对象，而不是某个特殊的变量。下面这个例子可以清晰地说明这个问题。&lt;/p&gt;
-
-&lt;p&gt;```
-function createFunctions(){
-    var result = new Array();&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for (var i=0; i &amp;lt; 10; i++){
-    result[i] = function(){
-        return i;
-    };
-}
-return result; } ```
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;这个函数会返回一个函数数组。表面上看，似乎每个函数都应该返自己的索引值，即位置 0 的函数返回 0，位置 1 的函数返回 1，以此类推。但实际上，每个函数都返回 10。因为每个函数的作用域链中都保存着 createFunctions() 函数的活动对象，所以它们引用的都是同一个变量 i 。当createFunctions() 函数返回后，变量 i 的值是 10，此时每个函数都引用着保存变量 i 的同一个变量对象，所以在每个函数内部 i 的值都是 10。但是，我们可以通过创建另一个匿名函数强制让闭包的行为符合预期：&lt;/p&gt;
-
-&lt;p&gt;```
-function createFunctions(){
-    var result = new Array();&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for (var i=0; i &amp;lt; 10; i++){
-    result[i] = function(num){
-        return function(){
-            return num;
-        };
-    }(i);
-}
-return result; } ```
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;在重写了前面的 createFunctions() 函数后，每个函数就会返回各自不同的索引值了。在这个版本中，我们没有直接把闭包赋值给数组，而是定义了一个匿名函数，并将立即执行该匿名函数的结果赋给数组。这里的匿名函数有一个参数 num ，也就是最终的函数要返回的值。在调用每个匿名函数时，我们传入了变量 i 。由于函数参数是按值传递的，所以就会将变量 i 的当前值复制给参数 num 。而在这个匿名函数内部，又创建并返回了一个访问 num 的闭包。这样一来， result 数组中的每个函数都有自己num 变量的一个副本，因此就可以返回各自不同的数值了。&lt;/p&gt;
-
-&lt;h5 id=&quot;this&quot;&gt;关于this对象&lt;/h5&gt;
-
-&lt;p&gt;在闭包中使用this对象也可能会导致一些问题。我们知道，this 对象是在运行时基于函数的执行环境绑定的：在全局函数中，this等于window，而当函数被作为某个对象的方法调用时，this等于那个对象。不过，匿名函数的执行环境具有全局性，因此其 this 对象通常指向window。但有时候由于编写闭包的方式不同，这一点可能不会那么明显。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-var name = &quot;The Window&quot;;
-var object = {
-    name : &quot;My Object&quot;,
-    getNameFunc : function(){
-        return function(){
-            return this.name;
-        };
-    }
-};
-alert(object.getNameFunc()()); //&quot;The Window&quot;（在非严格模式下）
-&lt;/code&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Wed, 01 Jun 2016 00:00:00 +0800</pubDate>
-        <link>http://zhaoyixin.xyz/2016/06/01/gaoCheng3-chapter7/</link>
-        <guid isPermaLink="true">http://zhaoyixin.xyz/2016/06/01/gaoCheng3-chapter7/</guid>
-        
-        <category>笔记</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>javaScript高级程序设计（第三版）读书笔记——面向对象的程序设计</title>
-        <description>&lt;p&gt;面向对象的语言有一个标志，那就是它们都有类的概念，而通过类可以创建多个具有相同属性和方法的对象。&lt;/p&gt;
-
-&lt;p&gt;ECMAScript把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数。”严格来说，这就相当于说对象是一组没有特定顺序的值。对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。正因为这样，我们可以把ECMAScript的对象想象成散列表：无非就是一组名值对，其中值可以是数据或函数。&lt;/p&gt;
-
-&lt;p&gt;每个对象都是基于一个引用类型创建的，这个引用类型可以是第五章讨论的原生类型，也可以是开发人员定义的类型。&lt;/p&gt;
-
-&lt;h4 id=&quot;section&quot;&gt;理解对象&lt;/h4&gt;
-
-&lt;p&gt;创建自定义对象的最简单方式就是创建一个Object的实例，然后再为它添加属性和方法：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-var person = new Object();
-person.name = &quot;zyx&quot;;
-person.age = 25;
-person.job = &quot;it&quot;;
-person.sayName = function(){
-    alert(this.name);
-};
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;早期的javascript开发人员经常使用这个模式创建新对戏那个。几年后，对象字面量成为创建这种对象的首选模式。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-var person = {
-    name:&quot;zyx&quot;,
-    age:25,
-    job:&quot;it&quot;,
-    sayName:function(){
-        alert(this.name);
-    }
-}
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;这个例子中的person对象与前面例子中的person对象是一样的，都有相同的属性和方法。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-1&quot;&gt;属性类型&lt;/h5&gt;
-
-&lt;p&gt;ECMAScript第五版在定义只有内部采用的特性时，描述了属性的各种特征。&lt;/p&gt;
-
-&lt;p&gt;ECMAScript中有两种属性：数据属性和访问器属性&lt;/p&gt;
-
-&lt;p&gt;1.数据属性&lt;/p&gt;
-
-&lt;p&gt;数据属性包含一个数据值的位置。在这个位置可以读取和写入值。数据属性有4个描述其行为的特性。&lt;/p&gt;
-
-&lt;p&gt; [[Configurable]] ：表示能否通过 delete 删除属性从而重新定义属性，能否修改属性的特
-性，或者能否把属性修改为访问器属性。像前面例子中那样直接在对象上定义的属性，它们的
-这个特性默认值为 true 。&lt;/p&gt;
-
-&lt;p&gt; [[Enumerable]] ：表示能否通过 for-in 循环返回属性。像前面例子中那样直接在对象上定
-义的属性，它们的这个特性默认值为 true 。&lt;/p&gt;
-
-&lt;p&gt; [[Writable]] ：表示能否修改属性的值。像前面例子中那样直接在对象上定义的属性，它们的
-这个特性默认值为 true 。&lt;/p&gt;
-
-&lt;p&gt; [[Value]] ：包含这个属性的数据值。读取属性值的时候，从这个位置读；写入属性值的时候，
-把新值保存在这个位置。这个特性的默认值为 undefined 。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-2&quot;&gt;定义多个属性&lt;/h5&gt;
-
-&lt;p&gt;由于为对象定义多个属性的可能性很大，ECMAScript5又定义了一个Object.defineproperties()方法。利用这个方法可以通过描述一次定义多个属性。这个方法接收两个对象参数：第一个对象是要添加和修改其属性的对象，第二个对象的属性与第一个对象中要添加或修改的属性一一对应。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-var book = {};
-Object.defineProperties(book, {
-    _year: {
-        value: 2004
-    },
-    edition: {
-        value: 1
-    },
-    year: {
-        get: function(){
-        return this._year;
-    },
-    set: function(newValue){
-        if (newValue &amp;gt; 2004) {
-            this._year = newValue;
-            this.edition += newValue - 2004;
-            }
-        }
-    }
-});
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section-3&quot;&gt;创建对象&lt;/h4&gt;
-
-&lt;p&gt;虽然Object构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用工厂模式的一种变体。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-4&quot;&gt;工厂模式&lt;/h5&gt;
-
-&lt;p&gt;工厂模式是软件工程领域一种广为人知的设计模式，这种模式抽象了创建具体对象的规程。考虑到在ECMAScript中无法创建类，开发人员就发明了一种函数，用函数来封装以特定接口创建对象的细节&lt;/p&gt;
-
-&lt;p&gt;```
-function createPerson(name,age,job){
-    var o = new Object();
-    o.name = name;
-    o.age = age;
-    o.job = job;
-    o.sayName = function(){
-        alert(this.name);
-    };
-    return o;
-}&lt;/p&gt;
-
-&lt;p&gt;var person1 = createPerson(“zyx”,25,”it”);
-var person2 = createPerson(“yz”,24,”it”);
-```&lt;/p&gt;
-
-&lt;p&gt;函数createPerson()能够根据接受的参数来创建一个包含所有必要信息的Person对象。可以无数次地调用这个函数，而每次它都会返回一个包含三个属性一个方法的对象。工厂模式虽然解决了创建多个相似对象的问题，但却没有解决对象识别的问题（即怎样知道一个对象的类型）。随着javascript的发展，又一个新模式出现了。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-5&quot;&gt;构造函数模式&lt;/h5&gt;
-
-&lt;p&gt;ECMAScript中的构造函数可用来创建特定类型的对象。像Object和Array这样的原生构造函数，在运行时会自动出现在执行环境中。此外，也可以创建自定义的构造函数，从而定义自定义对象类型的属性和方法。例如，可以使用构造函数模式将前面的例子重写&lt;/p&gt;
-
-&lt;p&gt;```
-function Person(name,age,job){
-    this.name = name;
-    this.age = age;
-    this.job = job;
-    this.sayName = function(){
-        alert(this.name);
-    };
-}&lt;/p&gt;
-
-&lt;p&gt;var person1 = new Person(“zyx”,25,”it”);
-var person2 = new Person(“yz”,24,”it”);
-```&lt;/p&gt;
-
-&lt;p&gt;在这个例子中，Person()函数取代了createPerson()函数。我们注意到， Person() 中的代码除了与 createPerson() 中相同的部分外，还存在以下不同之处：
-  没有显式地创建对象；
-  直接将属性和方法赋给了 this 对象；
-  没有 return 语句。&lt;/p&gt;
-
-&lt;p&gt;此外，还应该注意到函数名 Person 使用的是大写字母 P。按照惯例，构造函数始终都应该以一个大写字母开头，而非构造函数则应该以一个小写字母开头。这个做法借鉴自其他 OO 语言，主要是为了区别于 ECMAScript 中的其他函数；因为构造函数本身也是函数，只不过可以用来创建对象而已。要创建 Person 的新实例，必须使用 new 操作符。以这种方式调用构造函数实际上会经历以下4个步骤：
-(1) 创建一个新对象；
-(2) 将构造函数的作用域赋给新对象（因此 this 就指向了这个新对象） ；
-(3) 执行构造函数中的代码（为这个新对象添加属性） ；
-(4) 返回新对象。&lt;/p&gt;
-
-&lt;p&gt;在前面例子的最后， person1 和 person2 分别保存着 Person 的一个不同的实例。这两个对象都有一个 constructor （构造函数）属性，该属性指向 Person：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-alert(person1.constructor == Person); //true
-alert(person2.constructor == Person); //true
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;对象的 constructor 属性最初是用来标识对象类型的。但是，提到检测对象类型，还是 instanceof 操作符要更可靠一些。 我们在这个例子中创建的所有对象既是 Object 的实例， 同时也是 Person的实例，这一点通过 instanceof 操作符可以得到验证。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-alert(person1 instanceof Object); //true
-alert(person1 instanceof Person); //true
-alert(person2 instanceof Object); //true
-alert(person2 instanceof Person); //true
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;1.将构造函数当作函数&lt;/p&gt;
-
-&lt;p&gt;构造函数与其他函数的唯一区别，就在于调用它们的方式不同。不过，构造函数毕竟也是函数，不存在定义构造函数的特殊语法。任何函数，只要通过new操作符来调用，那它就可以作为构造函数；而任何函数，如果不通过new操作符来调用，那它跟普通函数也不会有什么两样。例如，前面例子中定义的Person()函数可以通过下列任何一种方式来调用。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-// 当作构造函数使用
-var person = new Person(&quot;Nicholas&quot;, 29, &quot;Software Engineer&quot;);
-person.sayName(); //&quot;Nicholas&quot;
-// 作为普通函数调用
-Person(&quot;Greg&quot;, 27, &quot;Doctor&quot;); // 添加到 window
-window.sayName(); //&quot;Greg&quot;
-// 在另一个对象的作用域中调用
-var o = new Object();
-Person.call(o, &quot;Kristen&quot;, 25, &quot;Nurse&quot;);
-o.sayName(); //&quot;Kristen&quot;
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;这个例子中的前两行代码展示了构造函数的典型用法， 即使用 new 操作符来创建一个新对象。 接下来的两行代码展示了不使用 new 操作符调用 Person() 会出现什么结果： 属性和方法都被添加给 window对象了。有读者可能还记得，当在全局作用域中调用一个函数时， this 对象总是指向 Global 对象（在浏览器中就是 window 对象） 。因此，在调用完函数之后，可以通过 window 对象来调用 sayName() 方法，并且还返回了 “Greg” 。最后，也可以使用 call() （或者 apply() ）在某个特殊对象的作用域中调用 Person() 函数。 这里是在对象 o 的作用域中调用的， 因此调用后 o 就拥有了所有属性和 sayName()方法。&lt;/p&gt;
-
-&lt;p&gt;2.构造函数的问题&lt;/p&gt;
-
-&lt;p&gt;构造函数模式虽然好用，但也并非没有缺点。使用构造函数的主要问题，就是每个方法都要在每个实例上重新创建一遍。在前面得例子中，person1和person2都有一个名为sayName()的方法，但那两个方法不是同一个function的实例。不要忘了——ECMAScript 中的函数是对象，因此每定义一个函数，也就是实例化了一个对象。从逻辑角度讲，此时的构造函数也可以这样定义。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-function Person(name, age, job){
-    this.name = name;
-    this.age = age;
-    this.job = job;
-    this.sayName = new Function(&quot;alert(this.name)&quot;); //  与声明函数在逻辑上是等价的
-}
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;从这个角度上来看构造函数，更容易明白每个 Person 实例都包含一个不同的 Function 实例（以显示 name 属性）的本质。说明白些，以这种方式创建函数，会导致不同的作用域链和标识符解析，但创建 Function 新实例的机制仍然是相同的。因此，不同实例上的同名函数是不相等的，以下代码可以证明这一点。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-alert(person1.sayName == person2.sayName); //false
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;然而，创建两个完成同样任务的 Function 实例的确没有必要；况且有 this 对象在，根本不用在执行代码前就把函数绑定到特定对象上面。因此，大可像下面这样，通过把函数定义转移到构造函数外部来解决这个问题。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-function Person(name, age, job){
-    this.name = name;
-    this.age = age;
-    this.job = job;
-    this.sayName = sayName;
-}
-function sayName(){
-    alert(this.name);
-}
-var person1 = new Person(&quot;Nicholas&quot;, 29, &quot;Software Engineer&quot;);
-var person2 = new Person(&quot;Greg&quot;, 27, &quot;Doctor&quot;);
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;在这个例子中，我们把 sayName() 函数的定义转移到了构造函数外部。而在构造函数内部，我们将 sayName 属性设置成等于全局的 sayName 函数。这样一来，由于 sayName 包含的是一个指向函数的指针，因此 person1 和 person2 对象就共享了在全局作用域中定义的同一个 sayName() 函数。这样做确实解决了两个函数做同一件事的问题，可是新问题又来了：在全局作用域中定义的函数实际上只能被某个对象调用，这让全局作用域有点名不副实。而更让人无法接受的是：如果对象需要定义很多方法，那么就要定义很多个全局函数，于是我们这个自定义的引用类型就丝毫没有封装性可言了。好在，这些问题可以通过使用原型模式来解决。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-6&quot;&gt;原型模式&lt;/h5&gt;
-
-&lt;p&gt;我们创建的每个函数都有一个 prototype （原型）属性，这个属性是一个指针，指向一个对象，而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法。如果按照字面意思来理解，那么 prototype 就是通过调用构造函数而创建的那个对象实例的原型对象。使用原型对象的好处是可以让所有对象实例共享它所包含的属性和方法。换句话说，不必在构造函数中定义对象实例的信息，而是可以将这些信息直接添加到原型对象中，如下面的例子所示。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-function Person(){
-}
-Person.prototype.name = &quot;Nicholas&quot;;
-Person.prototype.age = 29;
-Person.prototype.job = &quot;Software Engineer&quot;;
-Person.prototype.sayName = function(){
-    alert(this.name);
-};
-var person1 = new Person();
-person1.sayName(); //&quot;Nicholas&quot;
-var person2 = new Person();
-person2.sayName(); //&quot;Nicholas&quot;
-alert(person1.sayName == person2.sayName); //true
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;在此，我们将 sayName() 方法和所有属性直接添加到了 Person 的 prototype 属性中，构造函数变成了空函数。即使如此，也仍然可以通过调用构造函数来创建新对象，而且新对象还会具有相同的属性和方法。但与构造函数模式不同的是，新对象的这些属性和方法是由所有实例共享的。换句话说，person1 和 person2 访问的都是同一组属性和同一个 sayName() 函数。要理解原型模式的工作原理，必须先理解 ECMAScript 中原型对象的性质。&lt;/p&gt;
-
-&lt;p&gt;1.理解原型对象&lt;/p&gt;
-
-&lt;p&gt;无论什么时候，只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个constructor（构造函数）属性，这个属性包含一个指向prototype属性所在函数的指针。就拿前面得例子来说，Person.prototype.constructor指向Person。而通过这个构造函数，我们还可以继续为原型对象添加其他属性和方法。&lt;/p&gt;
-
-&lt;p&gt;创建了自定义的构造函数之后，其原型对象默认只会取得constructor属性；至于其他方法，则都是从Object继承而来的。当调用构造函数创建一个新实例后，该实例的内部将包含一个指针（内部属性），指向构造函数的原型对象。ECMAScript5中管这个指针叫prototype。虽然在脚本中没有标准的方式访问 [[Prototype]] ，但 Firefox、Safari 和 Chrome 在每个对象上都支持一个属性 &lt;strong&gt;proto&lt;/strong&gt; ；而在其他实现中，这个属性对脚本则是完全不可见的。不过，要明确的真正重要的一点就是，这个连接存在于实例与构造函数的原型对象之间，而不是存在于实例与构造函数之间。&lt;/p&gt;
-
-&lt;p&gt;以前面使用 Person 构造函数和 Person.prototype创建实例的代码为例，图 6-1 展示了各个对象之间的关系。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://zhaoyixin.xyz/img/2016-05-30-1.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;图 6-1 展示了 Person 构造函数、 Person 的原型属性以及 Person 现有的两个实例之间的关系。在此， Person.prototype 指向了原型对象， 而 Person.prototype.constructor 又指回了 Person 。原型对象中除了包含 constructor 属性之外，还包括后来添加的其他属性。 Person 的每个实例——person1 和 person2 都包含一个内部属性，该属性仅仅指向了 Person.prototype ；换句话说，它们与构造函数没有直接的关系。此外，要格外注意的是，虽然这两个实例都不包含属性和方法，但我们却可以调用 person1.sayName() 。这是通过查找对象属性的过程来实现的。&lt;/p&gt;
-
-&lt;p&gt;虽然在所有实现中都无法访问到 [[Prototype]] ，但可以通过 isPrototypeOf() 方法来确定对象之间是否存在这种关系。从本质上讲，如果 [[Prototype]] 指向调用 isPrototypeOf() 方法的对象（ Person.prototype ） ，那么这个方法就返回 true ，如下所示：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-alert(Person.prototype.isPrototypeOf(person1)); //true
-alert(Person.prototype.isPrototypeOf(person2)); //true
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;这里，我们用原型对象的 isPrototypeOf() 方法测试了 person1 和 person2 。因为它们内部都有一个指向 Person.prototype 的指针，因此都返回了 true 。&lt;/p&gt;
-
-&lt;p&gt;ECMAScript 5 增加了一个新方法，叫 Object.getPrototypeOf() ，在所有支持的实现中，这个方法返回 [[Prototype]] 的值。例如：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-alert(Object.getPrototypeOf(person1) == Person.prototype); //true
-alert(Object.getPrototypeOf(person1).name); //&quot;Nicholas&quot;
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;每当代码读取某个对象的某个属性时，都会执行一次搜索，目标是具有给定名字的属性。搜索首先从对象实例本身开始。如果在实例中找到了具有给定名字的属性，则返回该属性的值；如果没有找到，则继续搜索指针指向的原型对象，在原型对象中查找具有给定名字的属性。如果在原型对象中找到了这个属性，则返回该属性的值。也就是说，在我们调用 person1.sayName() 的时候，会先后执行两次搜索。首先，解析器会问： “实例 person1 有 sayName 属性吗？”答： “没有。 ”然后，它继续搜索，再问： “ person1 的原型有 sayName 属性吗？”答： “有。 ”于是，它就读取那个保存在原型对象中的函数。当我们调用 person2.sayName() 时，将会重现相同的搜索过程，得到相同的结果。而这正是多个对象实例共享原型所保存的属性和方法的基本原理。&lt;/p&gt;
-
-&lt;p&gt;前面提到过，原型最初只包含constructor属性，而该属性也是共享的，因此可以通过对象实例访问。&lt;/p&gt;
-
-&lt;p&gt;虽然可以通过对象实例访问保存在原型中的值，但却不能通过对象实例重写原型中的值。如果我们在实例中添加了一个属性，而该属性与实例原型中的一个属性同名，那我们就在实例中创建该属性，该属性将会屏蔽原型中的那个属性。来看下面的例子。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-function Person(){
-}
-Person.prototype.name = &quot;Nicholas&quot;;
-Person.prototype.age = 29;
-Person.prototype.job = &quot;Software Engineer&quot;;
-Person.prototype.sayName = function(){
-    alert(this.name);
-};
-var person1 = new Person();
-var person2 = new Person();
-person1.name = &quot;Greg&quot;;
-alert(person1.name); //&quot;Greg&quot; —— 来自实例
-alert(person2.name); //&quot;Nicholas&quot; —— 来自原型
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;在这个例子中， person1 的 name 被一个新值给屏蔽了。但无论访问 person1.name 还是访问person2.name 都能够正常地返回值，即分别是 “Greg” （来自对象实例）和 “Nicholas” （来自原型） 。当在 alert() 中访问 person1.name 时，需要读取它的值，因此就会在这个实例上搜索一个名为 name的属性。这个属性确实存在，于是就返回它的值而不必再搜索原型了。当以同样的方式访问 person2.name 时，并没有在实例上发现该属性，因此就会继续搜索原型，结果在那里找到了 name 属性。&lt;/p&gt;
-
-&lt;p&gt;当为对象实例添加一个属性时，这个属性就会屏蔽原型对象中保存的同名属性；换句话说，添加这个属性只会阻止我们访问原型中的那个属性，但不会修改那个属性。即使将这个属性设置为 null ，也只会在实例中设置这个属性，而不会恢复其指向原型的连接。不过，使用 delete 操作符则可以完全删除实例属性，从而让我们能够重新访问原型中的属性，如下所示。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-function Person(){
-}
-Person.prototype.name = &quot;Nicholas&quot;;
-Person.prototype.age = 29;
-Person.prototype.job = &quot;Software Engineer&quot;;
-Person.prototype.sayName = function(){
-    alert(this.name);
-};
-var person1 = new Person();
-var person2 = new Person();
-person1.name = &quot;Greg&quot;;
-alert(person1.name); //&quot;Greg&quot;——来自实例
-alert(person2.name); //&quot;Nicholas&quot;——来自原型
-delete person1.name;
-alert(person1.name); //&quot;Nicholas&quot; ——
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;在这个修改后的例子中，我们使用 delete 操作符删除了 person1.name ，之前它保存的 “Greg”值屏蔽了同名的原型属性。把它删除以后，就恢复了对原型中 name 属性的连接。因此，接下来再调用person1.name 时，返回的就是原型中 name 属性的值了。&lt;/p&gt;
-
-&lt;p&gt;使用 hasOwnProperty() 方法可以检测一个属性是存在于实例中， 还是存在于原型中。 这个方法 （不要忘了它是从 Object 继承来的）只在给定属性存在于对象实例中时，才会返回 true 。来看下面这个例子。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-function Person(){
-}
-Person.prototype.name = &quot;Nicholas&quot;;
-Person.prototype.age = 29;
-Person.prototype.job = &quot;Software Engineer&quot;;
-Person.prototype.sayName = function(){
-    alert(this.name);
-};
-var person1 = new Person();
-var person2 = new Person();
-alert(person1.hasOwnProperty(&quot;name&quot;)); //false
-person1.name = &quot;Greg&quot;;
-alert(person1.name); //&quot;Greg&quot;——来自实例
-alert(person1.hasOwnProperty(&quot;name&quot;)); //true
-alert(person2.name); //&quot;Nicholas&quot;——来自原型
-alert(person2.hasOwnProperty(&quot;name&quot;)); //false
-delete person1.name;
-alert(person1.name); //&quot;Nicholas&quot;——来自原型
-alert(person1.hasOwnProperty(&quot;name&quot;)); //false
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;通过使用 hasOwnProperty() 方法，什么时候访问的是实例属性，什么时候访问的是原型属性就一清二楚了。调用 person1.hasOwnProperty( “name”) 时，只有当 person1 重写 name 属性后才会返回 true ，因为只有这时候 name 才是一个实例属性，而非原型属性。&lt;/p&gt;
-
-&lt;p&gt;2.原型与in操作符&lt;/p&gt;
-
-&lt;p&gt;有两种方式使用in操作符：单独使用和在for-in循环中使用。在单独使用时，in操作符会在通过对象能够访问给定属性时返回true，无论该属性存在于实例中还是原型中。&lt;/p&gt;
-
-&lt;p&gt;```
-function Person(){
-}
-Person.prototype.name = “Nicholas”;
-Person.prototype.age = 29;
-Person.prototype.job = “Software Engineer”;
-Person.prototype.sayName = function(){
-    alert(this.name);
-};
-var person1 = new Person();
-var person2 = new Person();&lt;/p&gt;
-
-&lt;p&gt;alert(person1.hasOwnProperty(“name”)); //false
-alert(“name” in person1); //true&lt;/p&gt;
-
-&lt;p&gt;person1.name = “Greg”;
-alert(person1.name); //”Greg” ——来自实例
-alert(person1.hasOwnProperty(“name”)); //true
-alert(“name” in person1); //true&lt;/p&gt;
-
-&lt;p&gt;alert(person2.name); //”Nicholas” ——来自原型
-alert(person2.hasOwnProperty(“name”)); //false
-alert(“name” in person2); //true&lt;/p&gt;
-
-&lt;p&gt;delete person1.name;
-alert(person1.name); //”Nicholas” ——来自原型
-alert(person1.hasOwnProperty(“name”)); //false
-alert(“name” in person1); //true
-```&lt;/p&gt;
-
-&lt;p&gt;3.更简单的原型方法&lt;/p&gt;
-
-&lt;p&gt;前面例子中每添加一个属性和方法就要敲一遍Person.prototype。为减少不必要的输入，也为了从视觉上更好地封装原型的功能，更常见的做法是用一个包含所有属性和方法的对象字面量来重写整个原型对象：&lt;/p&gt;
-
-&lt;p&gt;```
-function Person(){}&lt;/p&gt;
-
-&lt;p&gt;Person.prototype = {
-    name:”zyx”,
-    age:25,
-    job:”it”,
-    sayName:function(){
-        alert(this.name);
-    }
-};
-```&lt;/p&gt;
-
-&lt;p&gt;在上面的代码中，我们将Person.prototype设置为一个以对象字面量形式创建的新对象。最终结果相同，但有一个例外：constructor属性不再指向Person了。前面曾经介绍过，每创建一个函数，就会同时创建它的prototype对象，这个对象也会自动获得constructor属性。而我们在这里使用的语法，本质上完全重写了默认的prototype对象，因此constructor属性也就变成了新对象的constructor属性（指向Object构造函数），不再指向Person函数。此时，尽管instanceof操作符还能返回正确的结果，但通过constructor已经无法确认对象的类型了：&lt;/p&gt;
-
-&lt;p&gt;```
-var friend = new Person();&lt;/p&gt;
-
-&lt;p&gt;alert(friend instanceof Object); //true
-alert(friend instanceof Person); //true
-alert(friend.constructor == Person); //false
-alert(friend.constructor == Object); //true
-```&lt;/p&gt;
-
-&lt;p&gt;4.原型的动态性&lt;/p&gt;
-
-&lt;p&gt;由于在原型中查找值的过程是一次搜索，因此我们对原型对象所做的任何修改都能够立即从实例上反映出来——即使是先创建了实例后修改原型也照样如此。&lt;/p&gt;
-
-&lt;p&gt;```
-var friend = new Person();&lt;/p&gt;
-
-&lt;p&gt;Person.prototype.sayHi = function(){
-    alert(“hi”);
-};&lt;/p&gt;
-
-&lt;p&gt;friend.sayHi(); //”hi”（没有问题！）
-```&lt;/p&gt;
-
-&lt;p&gt;以上代码先创建了 Person 的一个实例，并将其保存在 person 中。然后，下一条语句在 Person.prototype 中添加了一个方法 sayHi() 。即使 person 实例是在添加新方法之前创建的，但它仍然可以访问这个新方法。 其原因可以归结为实例与原型之间的松散连接关系。 当我们调用 person.sayHi()时，首先会在实例中搜索名为 sayHi 的属性，在没找到的情况下，会继续搜索原型。因为实例与原型之间的连接只不过是一个指针，而非一个副本，因此就可以在原型中找到新的 sayHi 属性并返回保存在那里的函数。&lt;/p&gt;
-
-&lt;p&gt;尽管可以随时为原型添加属性和方法，并且修改能够立即在所有对象实例中反映出来，但如果是重写整个原型对象，那么情况就不一样了。我们知道，调用构造函数时会为实例添加一个指向最初原型的[[Prototype]] 指针，而把原型修改为另外一个对象就等于切断了构造函数与最初原型之间的联系。请记住：实例中的指针仅指向原型，而不指向构造函数。看下面的例子。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-function Person(){
-}
-var friend = new Person();
-Person.prototype = {
-    constructor: Person,
-    name : &quot;Nicholas&quot;,
-    age : 29,
-    job : &quot;Software Engineer&quot;,
-    sayName : function () {
-        alert(this.name);
-    }
-};
-friend.sayName(); //error
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;在这个例子中，我们先创建了 Person 的一个实例，然后又重写了其原型对象。然后在调用friend.sayName() 时发生了错误，因为 friend 指向的原型中不包含以该名字命名的属性。&lt;/p&gt;
-
-&lt;p&gt;5.原生对象的原型&lt;/p&gt;
-
-&lt;p&gt;原型模式的重要性不仅体现在创建自定义类型方面，就连所有原生的引用类型，都是采用这种模式创建的。所有原生引用类型（ Object 、 Array 、 String ，等等）都在其构造函数的原型上定义了方法。例如，在 Array.prototype 中可以找到 sort() 方法，而在 String.prototype 中可以找到substring() 方法，如下所示。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-alert(typeof Array.prototype.sort); //&quot;function&quot;
-alert(typeof String.prototype.substring); //&quot;function&quot;
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;通过原生对象的原型，不仅可以取得所有默认方法的引用，而且也可以定义新方法。可以像修改自定义对象的原型一样修改原生对象的原型，因此可以随时添加方法。&lt;/p&gt;
-
-&lt;p&gt;6.原型对象的问题&lt;/p&gt;
-
-&lt;p&gt;原型模式也不是没有缺点。首先，它省略了为构造函数传递初始化参数这一环节，结果所有实例在默认情况下豆浆取得相同的属性值。虽然这会在某种程度上带来一些不方便，但还不是原型的最大问题。原型模式的最大问题是由其共享的本性所导致的。&lt;/p&gt;
-
-&lt;p&gt;原型中所有属性是被很多实例共享的，这种共享对于函数非常合适。对于那些包含基本值的属性倒也说的过去，毕竟，通过在实例上添加一个同名属性，可以隐藏原型中的对应属性。然而，对于包含引用类型值的属性来说，问题就不叫突出了。&lt;/p&gt;
-
-&lt;p&gt;```
-function Person(){
-}&lt;/p&gt;
-
-&lt;p&gt;Person.prototype = {
-constructor: Person,
-name : “Nicholas”,
-age : 29,
-job : “Software Engineer”,
-friends : [“Shelby”, “Court”],
-sayName : function () {
-    alert(this.name);
-}
-};
-var person1 = new Person();
-var person2 = new Person();&lt;/p&gt;
-
-&lt;p&gt;person1.friends.push(“Van”);&lt;/p&gt;
-
-&lt;p&gt;alert(person1.friends); //”Shelby,Court,Van”
-alert(person2.friends); //”Shelby,Court,Van”
-alert(person1.friends === person2.friends); //true
-```&lt;/p&gt;
-
-&lt;p&gt;在此，Person.prototype对象有一个名为friends的属性，该属性包含一个字符串数组。然后，创建了Person的两个实例。接着，修改了person1.friends引用的数组，向数组中添加了一个字符串。由于friends数组存在于Person.prototype而非person1中，所以刚刚提到的修改也会通过person2.friends（与person1.friends指向同一个数组）反映出来。假如我们的初衷就是像这样在所有实例中共享一个数组，那么对这个结果我没有话可说。可是，实例一般都是要有属于自己的全部属性的。而这个问题正是我们很少看到有人单独使用原型模式的原因所在。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-7&quot;&gt;组合使用构造函数模式和原型模式&lt;/h5&gt;
-
-&lt;p&gt;创建自定义类型的最常见方式，就是组合使用构造函数模式与原型模式。构造函数模式用于定义实例属性，而原型模式用于定义方法和共享的属性。结果，每个实例都会有自己的一份实例属性的副本，但同时又共享着对方法的引用，最大限度地节省了内存。另外，这种混成模式还支持向构造函数传递参数；可谓是集两种模式之长。下面的代码重写了前面的例子：&lt;/p&gt;
-
-&lt;p&gt;```
-function Person(name, age, job){
-    this.name = name;
-    this.age = age;
-    this.job = job;
-    this.friends = [“Shelby”, “Court”];
-}
-Person.prototype = {
-constructor : Person,
-sayName : function(){
-alert(this.name);
-}
-}
-var person1 = new Person(“Nicholas”, 29, “Software Engineer”);
-var person2 = new Person(“Greg”, 27, “Doctor”);&lt;/p&gt;
-
-&lt;p&gt;person1.friends.push(“Van”);
-alert(person1.friends); //”Shelby,Count,Van”
-alert(person2.friends); //”Shelby,Count”
-alert(person1.friends === person2.friends); //false
-alert(person1.sayName === person2.sayName); //true
-```&lt;/p&gt;
-
-&lt;p&gt;在这个例子中，实例属性都是在构造函数中定义的，而由所有实例共享的属性constructor和方法sayName()则是在原型中定义的。而修改了person1.friends（向其中添加一个新字符串），并不会影响到person2.friends，因为它们分别引用了不同的数组。&lt;/p&gt;
-
-&lt;p&gt;这种构造函数与原型混成的模式，是目前在ECMAScript中使用最广泛、认同度最高的一种创建自定义类型的方法。可以说，这是用来定义引用类型的一种默认模式。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-8&quot;&gt;继承&lt;/h4&gt;
-
-&lt;p&gt;继承时OO语言中最为人津津乐道的概念。许多OO语言都支持两种继承方式：接口继承和实现继承。接口继承只继承方法签名，而实现继承则继承实际的方法。如前所述，由于函数没有签名，在ECMAScript中无法实现接口继承。ECMAScript只支持实现继承，而且其实现继承主要是依靠原型链来实现的。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-9&quot;&gt;原型链&lt;/h5&gt;
-
-&lt;p&gt;ECMAScript 中描述了原型链的概念，并将原型链作为实现继承的主要方法。其基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法。简单回顾一下构造函数、原型和实例的关系：每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针。那么，假如我们让原型对象等于另一个类型的实例，结果会怎么样呢？显然，此时的原型对象将包含一个指向另一个原型的指针，相应地，另一个原型中也包含着一个指向另一个构造函数的指针。假如另一个原型又是另一个类型的实例，那么上述关系依然成立，如此层层递进，就构成了实例与原型的链条。这就是所谓原型链的基本概念。&lt;/p&gt;
-
-&lt;p&gt;实现原型链有一种基本模式，其代码大致如下。&lt;/p&gt;
-
-&lt;p&gt;```
-function SuperType(){
-    this.property = true;
-}&lt;/p&gt;
-
-&lt;p&gt;SuperType.prototype.getSuperValue = function(){
-    return this.property;
-};
-function SubType(){
-    this.subproperty = false;
-}
-//继承了 SuperType
-SubType.prototype = new SuperType();
-SubType.prototype.getSubValue = function (){
-    return this.subproperty;
-};
-var instance = new SubType();
-alert(instance.getSuperValue()); //true
-```&lt;/p&gt;
-
-&lt;p&gt;以上代码定义了两个类型： SuperType 和 SubType 。每个类型分别有一个属性和一个方法。它们的主要区别是 SubType 继承了 SuperType ，而继承是通过创建 SuperType 的实例，并将该实例赋给SubType.prototype 实现的。实现的本质是重写原型对象，代之以一个新类型的实例。换句话说，原来存在于 SuperType 的实例中的所有属性和方法，现在也存在于 SubType.prototype 中了。在确立了继承关系之后，我们给 SubType.prototype 添加了一个方法，这样就在继承了 SuperType 的属性和方法的基础上又添加了一个新方法。&lt;/p&gt;
-
-&lt;p&gt;通过实现原型链，本质上扩展了本章前面介绍的原型搜索机制。读者大概还记得，当以读取模式访问一个实例属性时，首先会在实例中搜索该属性。如果没有找到该属性，则会继续搜索实例的原型。在通过原型链实现继承的情况下，搜索过程就得以沿着原型链继续向上。就拿上面的例子来说，调用instance.getSuperValue() 会经历三个搜索步骤：1）搜索实例；2）搜索 SubType.prototype ；3）搜索 SuperType.prototype ，最后一步才会找到该方法。在找不到属性或方法的情况下，搜索过程总是要一环一环地前行到原型链末端才会停下来。&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 30 May 2016 00:00:00 +0800</pubDate>
-        <link>http://zhaoyixin.xyz/2016/05/30/gaoCheng3-chapter6/</link>
-        <guid isPermaLink="true">http://zhaoyixin.xyz/2016/05/30/gaoCheng3-chapter6/</guid>
         
         <category>笔记</category>
         

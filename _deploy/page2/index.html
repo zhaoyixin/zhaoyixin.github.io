@@ -154,6 +154,186 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2016/09/12/miaov-sjwt/">
+        <h2 class="post-title">
+            妙味课堂——事件委托
+        </h2>
+        
+        <div class="post-content-preview">
+            event对象：事件源 不管在哪个事件中，只要你操作的那个元素就是事件源。
+
+ie： window.event.srcElement 
+标准：event.target
+
+nodeName：找到当前元素的标签名
+
+事件委托：利用事件冒泡的原理，把事件加到父级上，触发执行效果
+
+好处：
+
+1、提高性能
+
+2、新添加的元素，还有之前的事件
+
+```
+for (var i=0;i&lt;aLi.le...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on September 12, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/09/12/miaov-kspx/">
+        <h2 class="post-title">
+            妙味课堂——快速排序
+        </h2>
+        
+        <div class="post-content-preview">
+            快速排序
+
+1、找一个基准点
+
+2、建立两个数组，分别存储左边和右边的数
+
+3、利用递归进行下次比较
+
+```
+function quickSort(){
+    if(arr.length == 1){
+        return arr;
+    }
+
+var num = Math.floor(arr.length/2);
+
+var numValue = arr.splice(num,...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on September 12, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/09/12/miaov-dxyy/">
+        <h2 class="post-title">
+            妙味课堂——对象引用
+        </h2>
+        
+        <div class="post-content-preview">
+            ```
+var a = 5;
+var b = a;
+
+b += 3;
+
+alert(b);    //8
+alert(a);    //5
+```
+
+```
+var a = [1,2,3];
+var b = a;
+
+b.push(4);
+
+alert(b);   //1,2,3,4
+alert(a);   //1,2,3,4
+```
+
+对象和函数都是引用的关系
+
+```
+var a = [1...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on September 12, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/09/12/miaov-DOM/">
+        <h2 class="post-title">
+            妙味课堂——DOM
+        </h2>
+        
+        <div class="post-content-preview">
+            DOM:Document Object Model 文档对象模型
+
+文档：HTML页面
+
+文档对象：页面中元素
+
+文档对象模型：定义 为了能够让程序（JS）去操作页面中的元素
+
+DOM会把文档看作是一棵树，同时定义了很多方法来操作这棵树中的每一个元素（节点）
+
+childNodes
+
+只读属性 子节点列表集合
+
+DOM节点的类型有很多种 12种 元素节点 文本节点
+
+
+oUl.childNo...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on September 12, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/06/01/gaoCheng3-chapter7/">
+        <h2 class="post-title">
+            javaScript高级程序设计（第三版）读书笔记——函数表达式
+        </h2>
+        
+        <div class="post-content-preview">
+            函数表达式是javascript中的一个既强大又容易令人困惑的特性。定义函数的方式有两种：一种是函数声明，另一种就是函数表达式。
+
+函数声明的语法是这样的：
+
+
+function functionName(arg0,arg1,arg2){
+    //函数体
+}
+
+
+首先是function关键字，然后是函数的名字，这就是指定函数名的方式。浏览器给函数定义了一个非标准的name属性，通过这个属...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on June 1, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/05/30/gaoCheng3-chapter6/">
+        <h2 class="post-title">
+            javaScript高级程序设计（第三版）读书笔记——面向对象的程序设计
+        </h2>
+        
+        <div class="post-content-preview">
+            面向对象的语言有一个标志，那就是它们都有类的概念，而通过类可以创建多个具有相同属性和方法的对象。
+
+ECMAScript把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数。”严格来说，这就相当于说对象是一组没有特定顺序的值。对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。正因为这样，我们可以把ECMAScript的对象想象成散列表：无非就是一组名值对，其中值可以是...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 赵祎鑫 on May 30, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2016/05/12/gaoCheng3-chapter5/">
         <h2 class="post-title">
             javaScript高级程序设计（第三版）读书笔记——引用类型
@@ -251,185 +431,6 @@ ECMAScript变量可能包含两种不同数据类型的值：基本类型值和�
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2016/03/30/js-miaov-7/">
-        <h2 class="post-title">
-            CSS3相关
-        </h2>
-        
-        <div class="post-content-preview">
-            CSS3相关
-
-transition 过渡
-
-```
-//过渡
-transition:1s width ease
-
-//浏览器内核前缀
--webkit- -moz- -o- -ms-
-```
-
-rbga 颜色值 rgba 红+绿+蓝+alpha
-
-
-rgba(0,0,0,0.5)
-
-
-linear-gradient 线性渐变
-
-
-linear-gradient(top,red 0%,blue...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 赵祎鑫 on March 30, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/03/24/js-miaov-6/">
-        <h2 class="post-title">
-            javaScript——事件取消
-        </h2>
-        
-        <div class="post-content-preview">
-            事件函数的取消
-
-第一种事件绑定形式的取消
-
-
-function fn1(){
-    alert(1);
-}
-function fn2(){
-    alert(2);
-}
-document.onclick = fn1;
-document.onclick = null;   //取消
-
-
-
-IE：obj.detachEvent(事件名称,事件函数);
-标准：obj.removeEventL...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 赵祎鑫 on March 24, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/03/23/js-miaov-5/">
-        <h2 class="post-title">
-            javaScript——事件
-        </h2>
-        
-        <div class="post-content-preview">
-            焦点事件
-
-焦点：使浏览器能够区分用户输入的对象，当一个元素有焦点的时候，那么它就可以接收用户的输入操作。
-
-
-  1、点击
-  2、tab
-  3、javascript
-
-
-不是所有的元素都能够接收焦点，能够响应用户操作的元素才能接收焦点。
-
-```
-window.onload = function(){
-    var oText = document.getElementById(‘t...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 赵祎鑫 on March 23, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/03/23/js-miaov-4/">
-        <h2 class="post-title">
-            javaScript——DOM
-        </h2>
-        
-        <div class="post-content-preview">
-            DOM概念
-
-DOM：Document Object Model(文档对象模型)
-
-文档：html页面
-
-文档对象：html页面中的元素
-
-文档对象模型：定义 为了能够让程序(javascript)去操作页面中的元素，而定义出来的一套标准。
-
-DOM会把文档看作一个DOM树状结构，树中的每一个标签 元素就是一个DOM节点，同时定义了很多方法来操作这个DOM树。
-
-childNodes
-
-ch...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 赵祎鑫 on March 23, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/03/23/js-miaov-3/">
-        <h2 class="post-title">
-            javaScript基础笔记——定时器二
-        </h2>
-        
-        <div class="post-content-preview">
-            函数封装
-
-```
-//speed不同、目标点不同、判断条件不同
-// doMove(oDiv,12,800);
-function doMove(obj,dir,target){
-    clearInterval(obj.timer);
-
-obj.timer = setInterval(function(){
-    var speed = parseInt(getStyle(obj,'l...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 赵祎鑫 on March 23, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/03/22/js-miaov-2/">
-        <h2 class="post-title">
-            javaScript基础笔记——定时器一
-        </h2>
-        
-        <div class="post-content-preview">
-            定时器应用
-
-
-//获取元素样式函数
-function getStyle(obj,attr){
-    return obj.currentStyle?obj.currentStyle[attr]:getComputed(obj)[attr];
-}
-
-
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 赵祎鑫 on March 22, 2016
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -489,7 +490,7 @@ function getStyle(obj,attr){
                             
                         
                             
-                                <a href="/tags/#笔记" title="笔记" rel="20">
+                                <a href="/tags/#笔记" title="笔记" rel="26">
                                     笔记
                                 </a>
                             
