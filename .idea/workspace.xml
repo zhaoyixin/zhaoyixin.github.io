@@ -3,46 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bd719791-3f3e-43ca-807a-a7ab434208e2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/02/hello-2016/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/02/hello-2016/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/14/new-start/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/14/new-start/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/15/gif-control/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/15/gif-control/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/16/beWeb/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/16/beWeb/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/18/for-xhsx/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/18/for-xhsx/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/18/http-hc/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/18/http-hc/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/22/workZJ/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/22/workZJ/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/24/krpano/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/24/krpano/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/24/mob-sp/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/24/mob-sp/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/02/25/web-hz/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/02/25/web-hz/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/01/jquery-qs/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/01/jquery-qs/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/01/zp-js/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/01/zp-js/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/21/js-miaov-1/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/21/js-miaov-1/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/22/js-miaov-2/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/22/js-miaov-2/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/23/js-miaov-3/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/23/js-miaov-3/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/23/js-miaov-4/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/23/js-miaov-4/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/23/js-miaov-5/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/23/js-miaov-5/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/24/js-miaov-6/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/24/js-miaov-6/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/03/30/js-miaov-7/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/03/30/js-miaov-7/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/04/11/jquery/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/04/11/jquery/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/05/10/gaoCheng3-bianliang/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/05/10/gaoCheng3-bianliang/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/05/10/gaoCheng3-function/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/05/10/gaoCheng3-function/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/05/12/gaoCheng3-chapter5/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/05/12/gaoCheng3-chapter5/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/05/30/gaoCheng3-chapter6/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/05/30/gaoCheng3-chapter6/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/06/01/gaoCheng3-chapter7/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/06/01/gaoCheng3-chapter7/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-DOM/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-DOM/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-dxyy/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-dxyy/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-kspx/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-kspx/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-sjwt/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-sjwt/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-smybds/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/12/miaov-smybds/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/13/miaov-bb/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/13/miaov-bb/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/13/miaov-ky/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/13/miaov-ky/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/2016/09/18/miaov-msdx1/index.html" afterPath="$PROJECT_DIR$/_deploy/2016/09/18/miaov-msdx1/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/about/index.html" afterPath="$PROJECT_DIR$/_deploy/about/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/feed.xml" afterPath="$PROJECT_DIR$/_deploy/feed.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/index.html" afterPath="$PROJECT_DIR$/_deploy/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/page2/index.html" afterPath="$PROJECT_DIR$/_deploy/page2/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/page3/index.html" afterPath="$PROJECT_DIR$/_deploy/page3/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/page4/index.html" afterPath="$PROJECT_DIR$/_deploy/page4/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_deploy/tags/index.html" afterPath="$PROJECT_DIR$/_deploy/tags/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2016-11-24-javascriptQWZN.markdown" afterPath="$PROJECT_DIR$/_posts/2016-11-24-javascriptQWZN.markdown" />
     </list>
     <ignored path="zhaoyixin.github.io.iws" />
@@ -67,7 +27,7 @@
         <entry file="file://$PROJECT_DIR$/_posts/2016-03-01-zp-js.markdown">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="791">
+              <first_editor relative-caret-position="6048">
                 <caret line="216" column="20" selection-start-line="216" selection-start-column="20" selection-end-line="216" selection-end-column="20" />
                 <folding />
               </first_editor>
@@ -83,8 +43,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/2016-11-24-javascriptQWZN.markdown">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="256">
-                <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <first_editor relative-caret-position="722">
+                <caret line="173" column="7" selection-start-line="173" selection-start-column="7" selection-end-line="173" selection-end-column="7" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -183,8 +143,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="840" />
-    <option name="width" value="1087" />
+    <option name="x" value="789" />
+    <option name="width" value="1138" />
     <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -375,15 +335,16 @@
       <workItem from="1477963287220" duration="11910000" />
       <workItem from="1478046989377" duration="4095000" />
       <workItem from="1478135972737" duration="1198000" />
-      <workItem from="1479947190866" duration="11761000" />
+      <workItem from="1479947190866" duration="12401000" />
+      <workItem from="1480035529205" duration="8836000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242335000" />
+    <option name="totallyTimeSpent" value="251811000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="840" y="0" width="1087" height="1057" extended-state="0" />
+    <frame x="789" y="0" width="1138" height="1057" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -391,12 +352,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5042017" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="CSS-X-Fire" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19176598" sideWeight="0.49579832" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -408,10 +367,12 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939914" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -818,7 +779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="687">
           <caret line="101" column="7" selection-start-line="101" selection-start-column="7" selection-end-line="101" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -826,14 +786,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="310">
           <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_posts/2016-03-01-zp-js.markdown">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="791">
+          <first_editor relative-caret-position="6048">
             <caret line="216" column="20" selection-start-line="216" selection-start-column="20" selection-end-line="216" selection-end-column="20" />
             <folding />
           </first_editor>
@@ -855,8 +814,8 @@
     <entry file="file://$PROJECT_DIR$/_posts/2016-11-24-javascriptQWZN.markdown">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="256">
-            <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <first_editor relative-caret-position="722">
+            <caret line="173" column="7" selection-start-line="173" selection-start-column="7" selection-end-line="173" selection-end-column="7" />
             <folding />
           </first_editor>
           <second_editor />
