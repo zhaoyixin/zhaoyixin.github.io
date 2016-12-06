@@ -227,3 +227,7 @@ tags:
 ####  锤子手机官网3D-hover效果
 
 [DEMO](http://zhaoyixin.xyz/zp-js/20161205/index.html)
+
+####  javascript折扇DEMO
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20161206/index.html)

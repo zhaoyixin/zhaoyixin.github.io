@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript折扇DEMO</title>
+    <style>
+        body{margin: 0;background-color: #666666;}
+        #box{width: 1200px;height: 700px;background: url("img/bg.png") no-repeat;position: relative;margin: 100px auto;}
+        #box div{width: 400px;height: 100px;border-radius: 9px;position: absolute;left: 555px;top: 440px;background: url("img/logo.png") no-repeat 285px 60px;transform-origin: 35px 50px;transition: 1s;}
+        #box div:nth-child(1){background-color: #417191;}
+        #box div:nth-child(2){background-color: #ce8298;}
+        #box div:nth-child(3){background-color: #f78992;}
+        #box div:nth-child(4){background-color: #fbc0a5;}
+        #box div:nth-child(5){background-color: #f8988f;}
+        #box div:nth-child(6){background-color: #f16273;}
+        #box div:nth-child(7){background-color: #9c9fcd;}
+        #box div:nth-child(8){background-color: #bae2d3;}
+        #box div:nth-child(9){background-color: #43bab8;}
+        #box div:nth-child(10){background-color: #678d95;cursor: pointer;}
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <script>
+        var box = document.getElementById('box');
+        var divs = box.getElementsByTagName('div');
+
+        setTimeout(go,300);
+        divs[9].onclick = function () {
+            shink();
+        };
+
+//        8 270 214 +56
+//        7 270 231 +39
+//        6 270 248 +22
+        for(var i=0;i<divs.length-1;i++){
+            divs[i].index = i;
+            divs[i].onclick = function () {
+                for(var i=0;i<divs.length;i++){
+                    if(i<this.index){
+                        divs[i].style.transform = 'rotate('+(350-(i*17)+this.index*17-80+10)+'deg)';
+                    }
+                    if(i>this.index){
+                        divs[i].style.transform = 'rotate('+(350-(i*17)+this.index*17-80-10)+'deg)';
+                    }
+                }
+                divs[this.index].style.transform = 'rotate('+(350-(this.index*17)+this.index*17-80)+'deg)';
+            }
+        }
+        function go(){
+//            使扇形打开
+            for(var i=0;i<divs.length;i++){
+                divs[i].style.transform = 'rotate(' + (350-(i*17)) + 'deg)';
+            }
+        }
+        function shink() {
+//            使扇子合起来
+            for(var i=0;i<divs.length;i++){
+                divs[i].style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
