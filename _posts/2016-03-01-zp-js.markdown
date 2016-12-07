@@ -231,3 +231,7 @@ tags:
 ####  javascript折扇DEMO
 
 [DEMO](http://zhaoyixin.xyz/zp-js/20161206/index.html)
+
+####  javascript展示页
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20161207/index.html)

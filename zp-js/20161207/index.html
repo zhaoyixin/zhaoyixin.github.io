@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript展示页</title>
+    <style>
+        body{margin: 0;padding: 0;background-color: #999999;}
+        #wrap{height: 500px;background: url("img/bg.png")no-repeat center;background-size: 1800px 500px;position: relative;transform-style: preserve-3d;perspective: 800px;margin-top: 100px;}
+        img{border: none;vertical-align: top;}
+        #wrap img{width: 300px;height: 200px;position: absolute;left: 50%;top: 50%;margin-left: -150px;margin-top: -100px;transition: 0.7s ease-in-out;}
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <img src="img/0.png">
+        <img src="img/1.png">
+        <img src="img/2.png">
+        <img src="img/3.png">
+        <img src="img/4.png">
+        <img src="img/5.png">
+        <img src="img/6.png">
+    </div>
+    <script>
+        var imgs = document.getElementsByTagName('img');
+        var now = 3;
+        var target;
+        var onOff= true;
+
+        setTimeout(function () {
+            tab(now);
+        },100);
+
+        for(var i=0;i<imgs.length;i++){
+//            imgs加自定义属性i，知道点击的是哪一个
+            imgs[i].index = i;
+            imgs[i].onclick = function () {
+                if(!onOff){
+                    return;
+                }
+                onOff = false;
+                target = this.index;
+                if(target>now){
+                    if(target-now<=3){
+                        goNext();
+                    }else{
+                        goPrev();
+                    }
+                }else{
+                    if(target+7-now<=3){
+                        goNext();
+                    }else{
+                        goPrev();
+                    }
+                }
+            }
+        }
+
+        function goNext() {
+//            调用函数，使图片往下一张切换
+            now++;
+            if(now>6){
+                now = 0;
+            }
+            tab(now);
+            if(now == target){
+//                运动完成
+                onOff = true;
+                return;
+            }
+            setTimeout(function () {
+                goNext();
+            },700);
+        }
+
+        function goPrev() {
+//            调用函数，使图片往上一张切换
+            now--;
+            if(now<0){
+                now = 6;
+            }
+            tab(now);
+            if(now == target){
+//                运动完成
+                onOff = true;
+                return;
+            }
+            setTimeout(function () {
+                goPrev();
+            },700);
+        }
+
+        function tab(n) {
+            for(var i=0;i<3;i++){
+                var Left = n-1-i;
+                if(Left<0){
+                    Left = Left+7;
+                }
+                imgs[Left].style.transform = 'translateX('+(-150*(i+1))+'px) translateZ('+(200-i*100)+'px) rotateY(30deg)';
+                var Right = n+1+i;
+                if(Right>6){
+                    Right = Right-7;
+                }
+                imgs[Right].style.transform = 'translateX('+(150*(i+1))+'px) translateZ('+(200-i*100)+'px) rotateY(-30deg)';
+            }
+            imgs[n].style.transform = 'translateZ(300px)';
+        }
+    </script>
+</body>
+</html>

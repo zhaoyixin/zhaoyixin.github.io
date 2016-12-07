@@ -35,10 +35,16 @@
     <script>
         var box = document.getElementById('box');
         var divs = box.getElementsByTagName('div');
+        var onOff = true;
 
         setTimeout(go,300);
         divs[9].onclick = function () {
-            shink();
+            if(onOff){
+                shink();
+            }else{
+                go();
+            }
+            onOff = !onOff;
         };
 
 //        8 270 214 +56
