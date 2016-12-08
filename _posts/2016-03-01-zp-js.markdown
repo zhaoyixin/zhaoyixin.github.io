@@ -239,3 +239,7 @@ tags:
 ####  javascript图片切换动画版
 
 [DEMO](http://zhaoyixin.xyz/zp-js/20161208/index.html)
+
+####  javascript3D照片墙
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20161208-2/index.html)
