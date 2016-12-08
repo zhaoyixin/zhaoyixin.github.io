@@ -235,3 +235,7 @@ tags:
 ####  javascript展示页
 
 [DEMO](http://zhaoyixin.xyz/zp-js/20161207/index.html)
+
+####  javascript图片切换动画版
+
+[DEMO](http://zhaoyixin.xyz/zp-js/20161208/index.html)
